@@ -13,6 +13,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { treatments, getTreatment } from "@/lib/treatments";
 import { treatmentImage } from "@/lib/images";
+import { TiltCard } from "@/components/TiltCard";
+import { CTABand } from "@/components/CTABand";
 
 export function generateStaticParams() {
   return treatments.map((t) => ({ slug: t.slug }));
@@ -63,8 +65,11 @@ export default async function TreatmentDetail({
           <div className="space-y-12">
             {/* Overview */}
             <Reveal>
-              <div className="glass-card overflow-hidden">
-                <div className="relative aspect-[21/9] w-full">
+              <TiltCard
+                className="rounded-3xl bg-white dark:bg-white/[0.03] shadow-soft overflow-hidden"
+                glowColor="rgba(79, 158, 40, 0.15)"
+              >
+                <div className="relative aspect-[21/9] w-full" style={{ transform: "translateZ(10px)" }}>
                   <Image
                     src={treatmentImage(t.slug)}
                     alt={`${t.title} Ayurvedic treatment at Pannu Vaid`}
@@ -78,62 +83,78 @@ export default async function TreatmentDetail({
                     <t.icon size={24} />
                   </span>
                 </div>
-                <div className="p-8">
-                  <h2 className="font-display text-2xl font-semibold">Overview</h2>
-                  <p className="mt-3 text-brand-800/75 dark:text-brand-200/65">
+                <div className="p-8" style={{ transform: "translateZ(20px)" }}>
+                  <h2 className="font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">Overview</h2>
+                  <p className="mt-4 text-brand-850 dark:text-brand-200/70 leading-relaxed text-base">
                     {t.overview}
                   </p>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
 
             {/* Symptoms & Causes */}
             <div className="grid gap-6 md:grid-cols-2">
               <Reveal>
-                <div className="glass-card h-full p-7">
-                  <h3 className="flex items-center gap-2 font-display text-xl font-semibold">
-                    <FiActivity className="text-brand-600" /> Common Symptoms
-                  </h3>
-                  <ul className="mt-4 space-y-2.5">
-                    {t.symptoms.map((s) => (
-                      <li key={s} className="flex gap-2.5 text-sm">
-                        <FiAlertCircle className="mt-0.5 shrink-0 text-gold-500" />
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <TiltCard
+                  className="h-full rounded-3xl bg-white dark:bg-white/[0.03] shadow-soft"
+                  glowColor="rgba(205, 198, 40, 0.15)"
+                >
+                  <div className="p-7 h-full flex flex-col justify-between">
+                    <div>
+                      <h3 className="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-brand-950 dark:text-brand-50" style={{ transform: "translateZ(15px)" }}>
+                        <FiActivity className="text-brand-600 dark:text-brand-400" /> Common Symptoms
+                      </h3>
+                      <ul className="mt-5 space-y-3" style={{ transform: "translateZ(5px)" }}>
+                        {t.symptoms.map((s) => (
+                          <li key={s} className="flex gap-2.5 text-sm text-brand-800/80 dark:text-brand-200/70 leading-relaxed">
+                            <FiAlertCircle className="mt-1 shrink-0 text-gold-500" />
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </TiltCard>
               </Reveal>
+              
               <Reveal delay={1}>
-                <div className="glass-card h-full p-7">
-                  <h3 className="flex items-center gap-2 font-display text-xl font-semibold">
-                    <FaLeaf className="text-brand-600" /> Causes
-                  </h3>
-                  <ul className="mt-4 space-y-2.5">
-                    {t.causes.map((c) => (
-                      <li key={c} className="flex gap-2.5 text-sm">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <TiltCard
+                  className="h-full rounded-3xl bg-white dark:bg-white/[0.03] shadow-soft"
+                  glowColor="rgba(79, 158, 40, 0.15)"
+                >
+                  <div className="p-7 h-full flex flex-col justify-between">
+                    <div>
+                      <h3 className="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-brand-950 dark:text-brand-50" style={{ transform: "translateZ(15px)" }}>
+                        <FaLeaf className="text-brand-600 dark:text-brand-400" /> Causes
+                      </h3>
+                      <ul className="mt-5 space-y-3" style={{ transform: "translateZ(5px)" }}>
+                        {t.causes.map((c) => (
+                          <li key={c} className="flex gap-2.5 text-sm text-brand-800/80 dark:text-brand-200/70 leading-relaxed">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" />
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </TiltCard>
               </Reveal>
             </div>
 
             {/* Approach */}
             <Reveal>
-              <div className="rounded-3xl bg-brand-gradient p-8 text-white shadow-soft">
-                <h3 className="font-display text-2xl font-semibold">
+              <div className="rounded-[2rem] bg-brand-gradient p-8 text-white shadow-2xl relative overflow-hidden border border-white/10">
+                <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-xl" />
+                <h3 className="font-display text-2xl font-bold tracking-tight relative z-10">
                   Our Ayurvedic Approach
                 </h3>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 relative z-10">
                   {t.approach.map((a) => (
                     <div
                       key={a}
-                      className="flex items-start gap-3 rounded-2xl bg-white/10 p-4 text-sm backdrop-blur"
+                      className="flex items-start gap-3 rounded-2xl bg-white/10 p-5 text-sm leading-relaxed backdrop-blur border border-white/15 shadow-inner"
                     >
-                      <FiCheckCircle className="mt-0.5 shrink-0" />
+                      <FiCheckCircle className="mt-0.5 shrink-0 text-white" />
                       {a}
                     </div>
                   ))}
@@ -144,18 +165,23 @@ export default async function TreatmentDetail({
             {/* Benefits */}
             <Reveal>
               <div>
-                <h3 className="font-display text-2xl font-semibold">
+                <h3 className="font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">
                   Benefits of Treatment
                 </h3>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  {t.benefits.map((b) => (
-                    <div
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {t.benefits.map((b, idx) => (
+                    <TiltCard
                       key={b}
-                      className="glass-card flex items-center gap-3 p-5 text-sm font-medium"
+                      className="rounded-2xl bg-white dark:bg-white/[0.03] shadow-soft"
+                      glowColor="rgba(205, 198, 40, 0.12)"
                     >
-                      <FiCheckCircle className="shrink-0 text-brand-600" />
-                      {b}
-                    </div>
+                      <div className="flex items-center gap-3.5 p-5 text-sm font-semibold text-brand-850 dark:text-brand-200" style={{ transform: "translateZ(10px)" }}>
+                        <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 shadow-sm border border-brand-100/50 dark:border-brand-900/50">
+                          <FiCheckCircle className="shrink-0" />
+                        </span>
+                        <span>{b}</span>
+                      </div>
+                    </TiltCard>
                   ))}
                 </div>
               </div>
@@ -182,26 +208,36 @@ export default async function TreatmentDetail({
       </section>
 
       {/* Related */}
-      <section className="section bg-brand-50/40 dark:bg-[#0a130a]">
+      <section className="section bg-brand-50/40 dark:bg-[#0a130a] relative overflow-hidden">
         <div className="container-px">
           <SectionHeading eyebrow="Explore More" title="Related Treatments" />
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {related.map((r) => (
-              <Link
-                key={r.slug}
-                href={`/treatments/${r.slug}`}
-                className="group glass-card flex items-center gap-4 p-6 transition hover:-translate-y-1"
-              >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-gradient text-white">
-                  <r.icon size={20} />
-                </span>
-                <span className="flex-1 font-semibold">{r.title}</span>
-                <FiArrowRight className="text-brand-600 transition group-hover:translate-x-1" />
-              </Link>
+            {related.map((r, rIdx) => (
+              <Reveal key={r.slug} delay={rIdx}>
+                <TiltCard
+                  className="rounded-2xl bg-white dark:bg-white/[0.03] shadow-soft h-full"
+                  glowColor="rgba(79, 158, 40, 0.12)"
+                >
+                  <Link
+                    href={`/treatments/${r.slug}`}
+                    className="group flex items-center gap-4 p-5 h-full"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-gradient text-white shadow-soft" style={{ transform: "translateZ(15px)" }}>
+                      <r.icon size={20} />
+                    </span>
+                    <span className="flex-1 font-bold text-sm text-brand-950 dark:text-brand-50 transition-colors duration-300 group-hover:text-brand-600 dark:group-hover:text-brand-400" style={{ transform: "translateZ(10px)" }}>
+                      {r.title}
+                    </span>
+                    <FiArrowRight className="text-brand-600 transition group-hover:translate-x-1" style={{ transform: "translateZ(5px)" }} />
+                  </Link>
+                </TiltCard>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
+      
+      <CTABand />
     </>
   );
 }

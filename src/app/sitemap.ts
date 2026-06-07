@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { treatments } from "@/lib/treatments";
 import { blogPosts } from "@/lib/content";
+import { products } from "@/lib/products";
 
 export const dynamic = "force-static";
 
@@ -28,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const productRoutes = products.map((p) => ({
+    url: `${site.url}/products/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   const blogRoutes = blogPosts.map((p) => ({
     url: `${site.url}/blog/${p.slug}`,
     lastModified: new Date(p.date),
@@ -35,5 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...treatmentRoutes, ...blogRoutes];
+  return [...staticRoutes, ...treatmentRoutes, ...productRoutes, ...blogRoutes];
 }
+

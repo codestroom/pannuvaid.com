@@ -5,6 +5,7 @@ import { FiCheckCircle, FiSend } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { treatments } from "@/lib/treatments";
 import { site } from "@/lib/site";
+import { TiltCard } from "./TiltCard";
 
 export function ConsultationForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -28,100 +29,98 @@ export function ConsultationForm() {
 
   if (submitted) {
     return (
-      <div className="glass-card p-8 text-center">
-        <FiCheckCircle className="mx-auto text-5xl text-brand-600" />
-        <h3 className="mt-4 font-display text-2xl font-semibold">Thank you!</h3>
-        <p className="mt-2 text-sm text-brand-800/70 dark:text-brand-200/60">
-          Your appointment request has been received. To confirm instantly, send
-          us the details on WhatsApp.
-        </p>
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn mt-6 bg-[#25D366] text-white hover:-translate-y-0.5"
-        >
-          <FaWhatsapp /> Confirm on WhatsApp
-        </a>
-      </div>
+      <TiltCard
+        className="rounded-3xl bg-white shadow-soft dark:bg-white/[0.03]"
+        glowColor="rgba(37, 211, 102, 0.2)"
+      >
+        <div className="p-8 text-center" style={{ transform: "translateZ(15px)" }}>
+          <FiCheckCircle className="mx-auto text-5xl text-brand-600 dark:text-brand-400" />
+          <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">Thank you!</h3>
+          <p className="mt-3 text-sm text-brand-800/75 dark:text-brand-200/65 leading-relaxed">
+            Your appointment request has been received. To confirm instantly, send
+            us the details on WhatsApp.
+          </p>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn mt-6 bg-[#25D366] text-white hover:bg-[#20ba59] shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 font-bold w-full flex items-center justify-center gap-2"
+          >
+            <FaWhatsapp className="text-xl" /> Confirm on WhatsApp
+          </a>
+        </div>
+      </TiltCard>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-card space-y-4 p-7 sm:p-8">
-      <h3 className="font-display text-xl font-semibold">
-        Request an Appointment
-      </h3>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Full Name">
-          <input
-            required
-            value={form.name}
-            onChange={(e) => update("name", e.target.value)}
-            placeholder="Your name"
-            className="input"
-          />
-        </Field>
-        <Field label="Phone Number">
-          <input
-            required
-            type="tel"
-            value={form.phone}
-            onChange={(e) => update("phone", e.target.value)}
-            placeholder="+91 ..."
-            className="input"
-          />
-        </Field>
-      </div>
-      <Field label="Concern / Treatment">
-        <select
-          value={form.treatment}
-          onChange={(e) => update("treatment", e.target.value)}
-          className="input"
-        >
-          {treatments.map((t) => (
-            <option key={t.slug}>{t.title}</option>
-          ))}
-          <option>General Enquiry</option>
-        </select>
-      </Field>
-      <Field label="Message (optional)">
-        <textarea
-          value={form.message}
-          onChange={(e) => update("message", e.target.value)}
-          rows={3}
-          placeholder="Tell us briefly about your condition..."
-          className="input resize-none"
-        />
-      </Field>
-      <button type="submit" className="btn-primary w-full">
-        <FiSend /> Submit Request
-      </button>
-      <p className="text-center text-xs text-brand-800/50 dark:text-brand-200/40">
-        We respect your privacy. Your details are never shared.
-      </p>
+    <TiltCard
+      className="rounded-3xl bg-white shadow-2xl dark:bg-white/[0.03]"
+      glowColor="rgba(79, 158, 40, 0.12)"
+    >
+      <form onSubmit={handleSubmit} className="space-y-5 p-7 sm:p-8 border border-white/20 dark:border-white/5 rounded-3xl">
+        <h3 className="font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50" style={{ transform: "translateZ(15px)" }}>
+          Request an Appointment
+        </h3>
+        
+        <div className="grid gap-4 sm:grid-cols-2" style={{ transform: "translateZ(10px)" }}>
+          <Field label="Full Name">
+            <input
+              required
+              value={form.name}
+              onChange={(e) => update("name", e.target.value)}
+              placeholder="Your name"
+              className="w-full rounded-2xl border border-brand-200/80 bg-white/60 px-4 py-3 text-sm outline-none transition-all duration-350 focus:border-brand-500 focus:bg-white dark:border-brand-800 dark:bg-white/5 dark:focus:bg-[#0c160c] dark:focus:border-brand-400 focus:ring-2 focus:ring-brand-500/10 text-brand-950 dark:text-brand-50"
+            />
+          </Field>
+          <Field label="Phone Number">
+            <input
+              required
+              type="tel"
+              value={form.phone}
+              onChange={(e) => update("phone", e.target.value)}
+              placeholder="+91 ..."
+              className="w-full rounded-2xl border border-brand-200/80 bg-white/60 px-4 py-3 text-sm outline-none transition-all duration-350 focus:border-brand-500 focus:bg-white dark:border-brand-800 dark:bg-white/5 dark:focus:bg-[#0c160c] dark:focus:border-brand-400 focus:ring-2 focus:ring-brand-500/10 text-brand-950 dark:text-brand-50"
+            />
+          </Field>
+        </div>
+        
+        <div style={{ transform: "translateZ(10px)" }}>
+          <Field label="Concern / Treatment">
+            <select
+              value={form.treatment}
+              onChange={(e) => update("treatment", e.target.value)}
+              className="w-full rounded-2xl border border-brand-200/80 bg-white/60 px-4 py-3 text-sm outline-none transition-all duration-350 focus:border-brand-500 focus:bg-white dark:border-brand-800 dark:bg-white/5 dark:focus:bg-[#0c160c] dark:focus:border-brand-400 focus:ring-2 focus:ring-brand-500/10 text-brand-950 dark:text-brand-50 appearance-none cursor-pointer"
+            >
+              {treatments.map((t) => (
+                <option key={t.slug} className="dark:bg-[#0b150a] dark:text-brand-50">{t.title}</option>
+              ))}
+              <option className="dark:bg-[#0b150a] dark:text-brand-50">General Enquiry</option>
+            </select>
+          </Field>
+        </div>
 
-      <style jsx>{`
-        :global(.input) {
-          width: 100%;
-          border-radius: 0.9rem;
-          border: 1px solid rgb(187 226 165 / 0.6);
-          background: rgb(255 255 255 / 0.6);
-          padding: 0.7rem 0.9rem;
-          font-size: 0.875rem;
-          outline: none;
-          transition: border-color 0.2s;
-        }
-        :global(.dark .input) {
-          background: rgb(255 255 255 / 0.04);
-          border-color: rgb(38 78 24 / 0.6);
-          color: #ecf4e6;
-        }
-        :global(.input:focus) {
-          border-color: #4f9e28;
-        }
-      `}</style>
-    </form>
+        <div style={{ transform: "translateZ(10px)" }}>
+          <Field label="Message (optional)">
+            <textarea
+              value={form.message}
+              onChange={(e) => update("message", e.target.value)}
+              rows={3}
+              placeholder="Tell us briefly about your condition..."
+              className="w-full rounded-2xl border border-brand-200/80 bg-white/60 px-4 py-3 text-sm outline-none transition-all duration-350 focus:border-brand-500 focus:bg-white dark:border-brand-800 dark:bg-white/5 dark:focus:bg-[#0c160c] dark:focus:border-brand-400 focus:ring-2 focus:ring-brand-500/10 text-brand-950 dark:text-brand-50 resize-none"
+            />
+          </Field>
+        </div>
+
+        <button type="submit" className="btn-primary w-full group py-4 flex items-center justify-center gap-2 font-bold shadow-lg" style={{ transform: "translateZ(15px)" }}>
+          <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /> Submit Request
+        </button>
+        
+        <p className="text-center text-xs text-brand-850/60 dark:text-brand-200/40" style={{ transform: "translateZ(5px)" }}>
+          We respect your privacy. Your details are never shared.
+        </p>
+      </form>
+    </TiltCard>
   );
 }
 
@@ -134,7 +133,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium">{label}</span>
+      <span className="mb-2 block text-xs sm:text-sm font-bold text-brand-850 dark:text-brand-200">{label}</span>
       {children}
     </label>
   );
