@@ -12,34 +12,37 @@ import { TiltCard } from "./TiltCard";
 
 const heroCards = [
   {
-    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=80",
-    title: "100% Organic Herbs",
-    desc: "Pure formulations without side effects.",
+    image: "/images/hero/digestive-churna.png",
+    title: "Kabz Care Churna",
+    desc: "Gentle natural laxative to clear bloating & acid buildup.",
     rotate: -8,
     x: -35,
     y: 15,
     zIndex: 10,
-    glow: "rgba(79, 158, 40, 0.2)"
+    glow: "rgba(205, 198, 40, 0.2)",
+    bgGradient: "from-[#201c05] via-[#0c0a02] to-black"
   },
   {
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
-    title: "Root-Cause Healing",
-    desc: "Personalised ancient Ayurvedic protocols.",
+    image: "/images/hero/joint-capsules.png",
+    title: "Joint & Nerve Capsules",
+    desc: "Soothes deep muscular pain & enhances joint mobility.",
     rotate: 2,
     x: 0,
     y: -15,
     zIndex: 20,
-    glow: "rgba(205, 198, 40, 0.2)"
+    glow: "rgba(220, 38, 38, 0.2)",
+    bgGradient: "from-[#220707] via-[#0d0303] to-black"
   },
   {
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80",
-    title: "Legacy of Trust",
-    desc: "50,000+ patients healed across Punjab.",
+    image: "/images/hero/liver-detox.png",
+    title: "Liver Care Tonic",
+    desc: "Classical syrup to stimulate liver cells & restore metabolism.",
     rotate: 8,
     x: 35,
     y: 20,
     zIndex: 30,
-    glow: "rgba(154, 108, 60, 0.2)"
+    glow: "rgba(79, 158, 40, 0.2)",
+    bgGradient: "from-[#081e08] via-[#040c04] to-black"
   },
 ];
 
@@ -257,26 +260,28 @@ export function Hero() {
                       className="w-full h-full rounded-[2rem] bg-white shadow-xl dark:bg-white/[0.04]"
                       glowColor={card.glow}
                     >
-                      <div className="relative w-full h-full rounded-[2rem] overflow-hidden flex flex-col justify-end p-6 border border-white/30 dark:border-white/10">
-                        {/* Background Image overlay */}
+                      <div className="relative w-full h-full rounded-[2rem] overflow-hidden flex flex-col justify-end p-6 border border-white/20 dark:border-white/10">
+                        {/* 3D Generated Graphic Backdrop */}
                         <div className="absolute inset-0">
                           <Image
                             src={card.image}
                             alt={card.title}
                             fill
-                            sizes="300px"
+                            priority
+                            sizes="320px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                          {/* Soft vignette gradient overlay for typography readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent pointer-events-none" />
                         </div>
 
                         {/* Card Content */}
                         <div className="relative z-10 text-white" style={{ transform: "translateZ(15px)" }}>
-                          <span className="inline-block p-2 rounded-xl bg-brand-gradient/80 text-white mb-3 text-sm">
+                          <span className="inline-flex p-1.5 rounded-lg bg-white/10 backdrop-blur-md text-white mb-2 text-[10px] border border-white/10">
                             <FaLeaf />
                           </span>
-                          <h3 className="font-display text-xl font-bold tracking-tight">{card.title}</h3>
-                          <p className="mt-1 text-xs text-white/80 leading-normal">{card.desc}</p>
+                          <h3 className="font-display text-base md:text-lg font-bold tracking-tight text-white leading-tight">{card.title}</h3>
+                          <p className="mt-1 text-[10px] text-white/80 leading-normal line-clamp-2">{card.desc}</p>
                         </div>
                       </div>
                     </TiltCard>

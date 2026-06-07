@@ -10,7 +10,6 @@ export interface Product {
   ingredients: { name: string; proportion: string; purpose: string }[];
   instructions: string;
   warnings: string;
-  price: string;
   size: string;
   badge: string;
 }
@@ -19,11 +18,11 @@ export const products: Product[] = [
   {
     id: "liver-tonic",
     slug: "liver-care-tonic",
-    title: "Liver Care Tonic",
+    title: "Liver Care",
     subTitle: "ਲੀਵਰ ਕੇਅਰ",
     image: "/images/products/liver-tonic.jpg",
     desc: "A specialized organic syrup formulated to rejuvenate liver cells, support cellular detoxification, and treat sluggish digestion.",
-    longDesc: "Pannu Vaid's Liver Care Tonic is an authentic Ayurvedic formulation designed to stimulate the liver, improve bile secretion, and treat disorders like fatty liver, sluggish metabolism, and loss of appetite. Made from a synergy of hepatoprotective herbs, it cleanses toxins (Ama) from the blood and strengthens the digestive fire (Agni).",
+    longDesc: "Pannu Vaid's Liver Care is an authentic Ayurvedic formulation designed to stimulate the liver, improve bile secretion, and treat disorders like fatty liver, sluggish metabolism, and loss of appetite. Made from a synergy of hepatoprotective herbs, it cleanses toxins (Ama) from the blood and strengthens the digestive fire (Agni).",
     benefits: [
       "Rejuvenates liver cells and supports natural regeneration",
       "Effective against fatty liver conditions and sluggish metabolism",
@@ -40,7 +39,6 @@ export const products: Product[] = [
     ],
     instructions: "🌅 Morning: Drink 100ml on an empty stomach. 🌇 Evening: Drink 100ml half an hour before dinner, or as directed by the practitioner.",
     warnings: "Shake well before use. Keep in a cool, dry place away from direct sunlight.",
-    price: "₹350",
     size: "100 ml Syrup",
     badge: "Detox & Rejuvenation",
   },
@@ -51,7 +49,7 @@ export const products: Product[] = [
     subTitle: "ਕਬਜ਼ ਮੁਕਤ ਚੂਰਨ",
     image: "/images/products/constipation-powder.jpg",
     desc: "A pure herbal formulation to relieve chronic constipation, cleanse the colon, and reduce bloating and acidity.",
-    longDesc: "Our Kabz Care Churna is a non-habit-forming, traditional laxative powder. It works by balancing Vata dosha in the colon, regulating peristalsis, and aiding natural bowel movements. Unlike chemical laxatives, it maintains the intestinal flora and strengthens the colon muscles.",
+    longDesc: "Our Kabz Care Churna is a non-habit-forming, traditional laxative powder. It works by calming and regulating the colon, supporting healthy peristalsis, and aiding natural bowel movements. Unlike chemical laxatives, it maintains the intestinal flora and strengthens the colon muscles.",
     benefits: [
       "Provides relief from chronic constipation and irregular bowels",
       "Eliminates abdominal gas, bloating, and stomach acidity",
@@ -61,14 +59,13 @@ export const products: Product[] = [
     ],
     ingredients: [
       { name: "Senna Leaves (Cassia angustifolia)", proportion: "35%", purpose: "Stimulates bowel movements" },
-      { name: "Haritaki (Terminalia chebula)", proportion: "25%", purpose: "Gentle colon cleanser and Vata balancer" },
+      { name: "Haritaki (Terminalia chebula)", proportion: "25%", purpose: "Gentle colon cleanser and digestive balancer" },
       { name: "Saunf (Foeniculum vulgare)", proportion: "20%", purpose: "Relieves gas, colic, and abdominal cramping" },
       { name: "Ajwain (Trachyspermum ammi)", proportion: "10%", purpose: "Improves digestive fire and digestion speed" },
       { name: "Kala Namak (Black Salt)", proportion: "10%", purpose: "Eases acidity and enhances taste" }
     ],
     instructions: "🌙 Bedtime: Take 1 level teaspoon (approx. 3-5g) with warm water before sleeping.",
     warnings: "Do not exceed the recommended dose. Not recommended during pregnancy.",
-    price: "₹220",
     size: "100g Pouch",
     badge: "Digestive Wellness",
   },
@@ -79,24 +76,23 @@ export const products: Product[] = [
     subTitle: "ਦਰਦ ਨਿਵਾਰਕ ਲਾਲ ਕੈਪਸੂਲ",
     image: "/images/products/red-capsules.jpg",
     desc: "Authentic herbal capsules designed to calm severe nerve irritation, alleviate arthritis flares, and support joint mobility.",
-    longDesc: "These Joint & Nerve Relief Capsules are formulated to tackle deep-rooted Vata disorders in the bones and muscles. They work by lubricating the joint sockets, reducing synovial swelling, and calming inflamed nerves. Ideal for patients suffering from arthritis, cervical spondylosis, and sciatica pain.",
+    longDesc: "These Joint & Nerve Relief Capsules are formulated to tackle deep-rooted disorders in the bones and muscles. They work by lubricating the joint sockets, reducing synovial swelling, and calming inflamed nerves. Ideal for patients suffering from arthritis, cervical spondylosis, and sciatica pain.",
     benefits: [
       "Reduces joint inflammation, pain, and morning stiffness",
       "Alleviates radiating sciatic pain and cervical numbness",
-      "Improves natural lubrication (Shleshaka Kapha) in joints",
+      "Improves natural lubrication in joints",
       "Strengthens weakened nerve pathways and muscular tissue",
       "Reduces high uric acid levels in the blood"
     ],
     ingredients: [
       { name: "Shallaki (Boswellia serrata)", proportion: "30%", purpose: "Powerful natural anti-inflammatory agent" },
       { name: "Guggulu (Commiphora mukul)", proportion: "25%", purpose: "Clears toxins from joints and reduces swelling" },
-      { name: "Rasna (Pluchea lanceolata)", proportion: "20%", purpose: "Pacifies aggravated Vata in the nervous system" },
+      { name: "Rasna (Pluchea lanceolata)", proportion: "20%", purpose: "Calms and nourishes the nervous system" },
       { name: "Ashwagandha (Withania somnifera)", proportion: "15%", purpose: "Strengthens muscles and relieves chronic fatigue" },
       { name: "Sunthi (Zingiber officinale)", proportion: "10%", purpose: "Improves digestion and combats joint stiffness" }
     ],
     instructions: "🥣 Post Meals: Take 1 capsule in the morning and 1 capsule in the evening with warm water or milk, after food.",
     warnings: "Consult your practitioner if you have severe hypertension or stomach ulcers.",
-    price: "₹450",
     size: "60 Capsules Jar",
     badge: "Joint & Muscle Care",
   },
@@ -124,7 +120,6 @@ export const products: Product[] = [
     ],
     instructions: "💆 Scalp Massage: Warm the oil slightly, apply to scalp, and massage gently with fingertips for 15-20 minutes. Leave overnight and wash. Use 3 times a week for 2 months.",
     warnings: "For external use only. Avoid contact with eyes.",
-    price: "₹280",
     size: "100 ml Bottle",
     badge: "Root Strength",
   },

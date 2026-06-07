@@ -94,8 +94,8 @@ export function ProductShowcase() {
                 <div className="px-6 pb-6 pt-3 border-t border-brand-100/30 dark:border-brand-900/10 flex flex-col gap-3" style={{ transform: "translateZ(10px)" }}>
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-800/40 dark:text-brand-250/30 block">Price</span>
-                      <span className="text-xl font-black text-brand-950 dark:text-brand-50">{product.price}</span>
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-800/40 dark:text-brand-250/30 block">Pack Size</span>
+                      <span className="text-base font-black text-brand-950 dark:text-brand-50">{product.size}</span>
                     </div>
                     
                     {/* View Details Link */}

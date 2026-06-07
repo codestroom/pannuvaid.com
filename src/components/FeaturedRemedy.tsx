@@ -52,14 +52,6 @@ export function FeaturedRemedy({ slug }: { slug: string }) {
 
           {/* Pedestal shadow */}
           <div className="pointer-events-none absolute bottom-4 left-1/2 h-5 w-3/5 -translate-x-1/2 rounded-full bg-black/15 blur-xl dark:bg-black/40" />
-
-          {/* Floating price chip */}
-          <div className="absolute bottom-6 right-2 z-10 rounded-2xl border border-brand-100/60 bg-white/90 px-4 py-2.5 text-center shadow-xl backdrop-blur dark:border-white/10 dark:bg-black/60">
-            <span className="block text-[9px] font-extrabold uppercase tracking-widest text-brand-800/50 dark:text-brand-300/50">
-              Only
-            </span>
-            <span className="text-2xl font-black text-brand-950 dark:text-brand-50">{product.price}</span>
-          </div>
         </div>
 
         {/* Copy */}

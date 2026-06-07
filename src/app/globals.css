@@ -30,7 +30,7 @@
 
 @layer components {
   .container-px {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[115rem] px-5 sm:px-8 lg:px-16;
   }
   .glass {
     @apply border border-white/40 bg-white/60 backdrop-blur-xl dark:border-white/10 dark:bg-white/5;

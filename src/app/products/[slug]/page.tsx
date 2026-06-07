@@ -113,14 +113,10 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
               </Reveal>
 
               <Reveal delay={1}>
-                <div className="grid grid-cols-2 gap-4 rounded-3xl bg-brand-50/20 dark:bg-white/[0.02] border border-brand-100/35 dark:border-white/5 p-4 sm:p-5">
+                <div className="rounded-3xl bg-brand-50/20 dark:bg-white/[0.02] border border-brand-100/35 dark:border-white/5 p-4 sm:p-5">
                   <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-800/40 dark:text-brand-250/30 block">Therapeutic Price</span>
-                    <span className="text-3xl font-black text-brand-950 dark:text-brand-50">{p.price}</span>
-                  </div>
-                  <div className="border-l border-brand-100/30 dark:border-white/5 pl-4 sm:pl-5">
                     <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-800/40 dark:text-brand-250/30 block">Package Size</span>
-                    <span className="text-lg font-extrabold text-brand-950 dark:text-brand-50 mt-1 block">{p.size}</span>
+                    <span className="text-2xl font-black text-brand-950 dark:text-brand-50 mt-1 block">{p.size}</span>
                   </div>
                 </div>
               </Reveal>
@@ -243,7 +239,7 @@ export default async function ProductDetailPage(props: { params: Promise<{ slug:
                     </div>
                   </div>
                   <div className="px-5 pb-5 pt-2 flex items-center justify-between border-t border-brand-100/20 dark:border-brand-900/10">
-                    <span className="text-base font-black text-brand-950 dark:text-brand-50">{item.price}</span>
+                    <span className="text-xs font-bold text-brand-800/50 dark:text-brand-200/40">{item.size}</span>
                     <Link
                       href={`/products/${item.slug}`}
                       className="text-xs font-bold text-brand-650 dark:text-brand-400 hover:underline inline-flex items-center gap-1"

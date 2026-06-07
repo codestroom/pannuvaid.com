@@ -4,9 +4,9 @@ export const site = {
   description:
     "Discover natural Ayurvedic solutions for joint pain, arthritis, back pain, digestive issues, and overall wellness with Pannu Vaid in Samrala, Punjab.",
   url: "https://www.pannuvaid.com",
-  phone: "+91 98765 43210",
-  phoneHref: "+919876543210",
-  whatsapp: "919876543210",
+  phone: "+91 99889 12012",
+  phoneHref: "+919988912012",
+  whatsapp: "919988912012",
   email: "care@pannuvaid.com",
   address: {
     street: "Main Bazaar, Samrala",

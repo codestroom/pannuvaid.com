@@ -12,7 +12,7 @@ export function OrderForm({ product }: { product: Product }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hello Pannu Vaid,\nI would like to order:\n\n*Product:* ${product.title} (${product.subTitle})\n*Price:* ${product.price}\n\n*Customer Details:*\n- Name: ${form.name}\n- Phone: ${form.phone}\n- Shipping Address: ${form.address}`;
+    const message = `Hello Pannu Vaid,\nI would like to order:\n\n*Product:* ${product.title} (${product.subTitle})\n\n*Customer Details:*\n- Name: ${form.name}\n- Phone: ${form.phone}\n- Shipping Address: ${form.address}`;
     const whatsappLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappLink, "_blank");

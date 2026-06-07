@@ -19,8 +19,8 @@ const steps: Step[] = [
   },
   {
     icon: FaBalanceScale,
-    title: "Dosha Diagnosis",
-    desc: "An authentic Ayurvedic assessment maps your Vata, Pitta, and Kapha balance to pinpoint what's out of harmony.",
+    title: "Root-Cause Diagnosis",
+    desc: "An authentic Ayurvedic assessment pinpoints the true root of your condition and exactly what's out of balance.",
   },
   {
     icon: FaMortarPestle,

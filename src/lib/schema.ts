@@ -12,7 +12,6 @@ export const localBusinessSchema = {
   email: site.email,
   image: `${site.url}/logo.png`,
   logo: `${site.url}/logo.png`,
-  priceRange: "₹₹",
   medicalSpecialty: "Ayurvedic Medicine",
   address: {
     "@type": "PostalAddress",

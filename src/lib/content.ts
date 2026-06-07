@@ -175,25 +175,25 @@ export const blogPosts: BlogPost[] = [
     content: [
       "Joint pain is one of the most common complaints we see, and Ayurveda offers a rich pharmacy of herbs to address it at the root.",
       "Shallaki (Boswellia) is renowned for its anti-inflammatory action, helping reduce swelling and stiffness without harming the stomach.",
-      "Guggulu purifies tissues and supports healthy joint function, while Ashwagandha strengthens muscles and calms aggravated Vata.",
+      "Guggulu purifies tissues and supports healthy joint function, while Ashwagandha strengthens muscles and calms inflammation.",
       "Turmeric (Haridra) and Ginger (Shunthi) round out a powerful anti-inflammatory protocol when used under proper guidance.",
       "Always consult a qualified Ayurvedic practitioner before starting herbs, as dosage and combination must be tailored to your constitution.",
     ],
   },
   {
     slug: "understanding-vata-and-pain",
-    title: "Understanding Vata Dosha: The Root of Most Pain",
+    title: "Understanding the Root Cause of Most Pain",
     category: "Ayurveda",
     excerpt:
-      "Why do so many pain conditions trace back to Vata imbalance? Here's what Ayurveda teaches about movement, dryness, and discomfort.",
+      "Why do so many pain conditions share the same root? Here's what Ayurveda teaches about movement, dryness, and discomfort.",
     author: "Pannu Vaid",
     date: "2026-05-08",
     readTime: "5 min read",
     content: [
-      "In Ayurveda, Vata governs all movement in the body — including the nervous system and the joints.",
-      "When Vata becomes aggravated by stress, cold, irregular routine, or ageing, it can cause dryness, cracking joints, and shooting pains.",
-      "Balancing Vata involves warmth, oil, routine, and nourishing foods — principles we build into every treatment plan.",
-      "Understanding your dominant dosha is the first step to lasting relief rather than temporary symptom control.",
+      "In Ayurveda, the body's movement and nervous energy govern circulation, the nervous system, and the joints.",
+      "When this energy becomes aggravated by stress, cold, irregular routine, or ageing, it can cause dryness, cracking joints, and shooting pains.",
+      "Restoring balance involves warmth, oil, routine, and nourishing foods — principles we build into every treatment plan.",
+      "Understanding your body's unique constitution is the first step to lasting relief rather than temporary symptom control.",
     ],
   },
   {
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-05",
     readTime: "6 min read",
     content: [
-      "Ayurveda classifies most arthritis as Aamavata — a condition of toxins (Ama) combined with aggravated Vata.",
+      "Ayurveda classifies most arthritis as a condition of accumulated toxins (Ama) combined with poor circulation.",
       "The cornerstone of treatment is improving digestion to stop toxin formation, then clearing existing toxins through Panchakarma.",
       "An anti-inflammatory diet, warm therapies, and targeted herbs work together to reduce flare-ups.",
       "Consistency is key — patients who follow the full protocol see the most durable improvement.",
