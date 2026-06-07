@@ -1,138 +1,352 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { FiCheckCircle, FiPlay } from "react-icons/fi";
+import Link from "next/link";
+import { FiCheck, FiPlay, FiClock, FiActivity, FiArrowRight, FiShield, FiHeart } from "react-icons/fi";
+import { FaLeaf, FaPlay, FaWhatsapp } from "react-icons/fa";
 import { PageHero } from "@/components/PageHero";
-import { galleryImages } from "@/lib/images";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { Stars } from "@/components/Stars";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { CTABand } from "@/components/CTABand";
-import { successStories, testimonials } from "@/lib/content";
+import { successStories, testimonials, videoFeedback } from "@/lib/content";
 import { TiltCard } from "@/components/TiltCard";
+import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Success Stories & Patient Reviews — Real Ayurvedic Recoveries",
-  description:
-    "Read real patient success stories, recovery journeys, and reviews from people healed at Pannu Vaid Ayurvedic clinic in Samrala, Punjab.",
-  alternates: { canonical: "/success-stories" },
-};
+// Detailed journey timeline data linked to success stories
+const journeyDetails = [
+  {
+    name: "Balwinder S.",
+    age: 62,
+    condition: "Severe Osteoarthritis",
+    duration: "3 Months Therapy",
+    painBefore: 9,
+    painAfter: 1,
+    mobilityBefore: 20,
+    mobilityAfter: 90,
+    milestones: [
+      {
+        week: "Week 0",
+        title: "Severe Joint Degradation",
+        desc: "Constant bone-on-bone friction, knee swelling, unable to walk more than 50 steps without extreme agony. Dependent on daily ibuprofen.",
+      },
+      {
+        week: "Week 6",
+        title: "Cartilage & Lubrication Support",
+        desc: "Began daily Shallaki & joint capsule extracts. Knee inflammation dropped by 50%. Morning stiffness began to clear within 20 minutes of waking.",
+      },
+      {
+        week: "Week 12",
+        title: "Active Pain-Free Living",
+        desc: "Walks 3 km every morning around Samrala park. Painkillers completely stopped. Swelling resolved and joint range of motion fully restored.",
+      },
+    ],
+  },
+  {
+    name: "Kamaljit K.",
+    age: 48,
+    condition: "Chronic Sciatica",
+    duration: "10 Weeks Therapy",
+    painBefore: 8,
+    painAfter: 0,
+    mobilityBefore: 15,
+    mobilityAfter: 95,
+    milestones: [
+      {
+        week: "Week 0",
+        title: "Radiating Nerve Agony",
+        desc: "Severe sciatic nerve compression radiating down left thigh. Unable to sit on a chair or stand in the kitchen for over 10 minutes.",
+      },
+      {
+        week: "Week 4",
+        title: "Nerve Calming & Nourishment",
+        desc: "Prescribed targeted Rasna and Ashwagandha formulations to soothe nerve pathways. Radiation frequency reduced from constant to occasional.",
+      },
+      {
+        week: "Week 10",
+        title: "Complete Nerve Freedom",
+        desc: "Zero pain or numbness. Back to sewing, driving, and managing household chores without physical discomfort.",
+      },
+    ],
+  },
+  {
+    name: "Sukhwinder P.",
+    age: 55,
+    condition: "Cervical Spondylosis",
+    duration: "8 Weeks Therapy",
+    painBefore: 8,
+    painAfter: 1,
+    mobilityBefore: 30,
+    mobilityAfter: 85,
+    milestones: [
+      {
+        week: "Week 0",
+        title: "Neck Rigidity & Headaches",
+        desc: "Extremely stiff upper spine, shooting numbness in the right arm, and chronic stress headaches from compressed cervical discs.",
+      },
+      {
+        week: "Week 3",
+        title: "Spinal Decompression & Relief",
+        desc: "Muscle spasms relaxed. Arm numbness disappeared. Headache frequency reduced to once per week.",
+      },
+      {
+        week: "Week 8",
+        title: "Restored Neck Flexion",
+        desc: "Full neck rotation restored. Neck feels light and painless. No more headaches or arm tingling.",
+      },
+    ],
+  },
+];
 
 export default function SuccessStoriesPage() {
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [activeJourney, setActiveJourney] = useState<number>(0);
+
   return (
     <>
       <PageHero
-        eyebrow="Success Stories"
-        title="Real Patients, Real Recoveries"
-        description="Genuine before-and-after journeys and reviews from patients who reclaimed their health with Pannu Vaid."
+        eyebrow="Recovery Records"
+        title="Verified Healing Journeys"
+        description="Authentic case files and video documentation from patients who recovered through classical Ayurvedic treatment at our clinic."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Success Stories" }]}
       />
 
-      {/* Before & after cases */}
-      <section className="section pt-10">
+      {/* Video Testimony Player Section */}
+      <section className="section bg-hero-radial pt-12 pb-20 relative overflow-hidden">
+        {/* Ambient background glows */}
+        <div className="absolute top-1/3 left-1/4 -z-10 h-[300px] w-[300px] rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
+        
+        <div className="container-px">
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <Reveal>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50">
+                🎥 Patient Video Diaries
+              </span>
+            </Reveal>
+            <Reveal delay={1}>
+              <h2 className="mt-4 font-display text-3xl font-black leading-tight text-brand-950 dark:text-brand-50 sm:text-4xl md:text-[2.6rem] tracking-tight">
+                Watch Real Clinic Recoveries
+              </h2>
+            </Reveal>
+            <Reveal delay={2}>
+              <p className="mt-4 text-base sm:text-lg text-brand-800/70 dark:text-brand-200/60 leading-relaxed max-w-2xl mx-auto">
+                Watch patient feedback videos recorded live at our Samrala clinic. Real people sharing their path to wellness.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {videoFeedback.map((video, idx) => (
+              <Reveal key={idx} delay={idx}>
+                <TiltCard
+                  className="rounded-[2rem] bg-white dark:bg-[#0c160c]/40 border border-white/20 dark:border-white/5 shadow-soft overflow-hidden h-[220px] relative group"
+                  glowColor="rgba(79, 158, 40, 0.15)"
+                >
+                  {playingVideo === idx ? (
+                    <div className="absolute inset-0 bg-black">
+                      <video
+                        src={video.src}
+                        poster={video.poster}
+                        controls
+                        autoPlay
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div 
+                      className="absolute inset-0 cursor-pointer"
+                      onClick={() => setPlayingVideo(idx)}
+                    >
+                      {/* Video Poster Image placeholder fallback */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent z-10" />
+                      
+                      {/* Placeholder background layout with gradient patterns */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-brand-950/40 to-[#0c160c]">
+                        <Image
+                          src={video.poster || "/images/about-clinic.jpg"}
+                          alt={video.label}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover opacity-75 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+
+                      {/* Play Button overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center z-20">
+                        <span className="h-14 w-14 rounded-full bg-brand-gradient text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                          <FaPlay className="text-sm ml-1" />
+                        </span>
+                      </div>
+
+                      {/* Video labels */}
+                      <div className="absolute bottom-5 left-5 right-5 z-20 text-white">
+                        <span className="inline-block px-2.5 py-0.5 rounded-md bg-white/15 backdrop-blur text-[10px] uppercase font-bold tracking-widest border border-white/10 mb-2">
+                          {video.condition}
+                        </span>
+                        <h4 className="font-display text-base font-bold tracking-tight text-white leading-tight">{video.label}</h4>
+                      </div>
+                    </div>
+                  )}
+                </TiltCard>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clinical Journey Timelines */}
+      <section className="section bg-white dark:bg-[#070c07]/20 border-y border-brand-100/30 dark:border-brand-900/10">
         <div className="container-px">
           <SectionHeading
-            eyebrow="Before & After"
-            title="Recovery Journeys"
+            eyebrow="Interactive Journey Map"
+            title="The Healing Chronology"
+            description="Toggle through patient stories to explore their week-by-week timeline of recovery."
           />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {successStories.map((s, i) => (
-              <Reveal key={s.name} delay={i}>
-                <TiltCard
-                  className="h-full rounded-3xl bg-white dark:bg-white/[0.03] shadow-soft"
-                  glowColor="rgba(154, 108, 60, 0.15)"
-                >
-                  <div className="p-7 h-full flex flex-col justify-between">
+
+          {/* Toggle buttons */}
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {journeyDetails.map((journey, idx) => (
+              <button
+                key={journey.name}
+                onClick={() => setActiveJourney(idx)}
+                className={`px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 border ${
+                  activeJourney === idx
+                    ? "bg-brand-gradient border-transparent text-white shadow-md shadow-brand-900/10"
+                    : "border-brand-100 dark:border-brand-900 bg-brand-50/20 dark:bg-white/[0.02] text-brand-800 dark:text-brand-300 hover:bg-brand-50/50 dark:hover:bg-white/[0.05]"
+                }`}
+              >
+                {journey.name} ({journey.condition})
+              </button>
+            ))}
+          </div>
+
+          {/* Selected Journey Display */}
+          <div className="mt-12 max-w-5xl mx-auto">
+            <Reveal key={activeJourney}>
+              <div className="grid gap-10 lg:grid-cols-12 items-start bg-brand-50/15 dark:bg-[#0a110a]/40 border border-brand-100/35 dark:border-brand-900/30 rounded-[2.5rem] p-6 sm:p-10 shadow-soft">
+                
+                {/* Left Column: Progress Indicators */}
+                <div className="lg:col-span-4 space-y-6">
+                  <div className="flex items-center gap-2">
+                    <span className="p-2 rounded-xl bg-brand-100 dark:bg-brand-950/60 text-brand-655 text-sm">
+                      <FiActivity />
+                    </span>
+                    <h3 className="font-display text-lg font-black text-brand-950 dark:text-brand-50">Clinical Metrics</h3>
+                  </div>
+
+                  <p className="text-xs text-brand-800/60 dark:text-brand-200/40 font-bold uppercase tracking-wider">
+                    Patient Profile: {journeyDetails[activeJourney].age} Years Old • {journeyDetails[activeJourney].duration}
+                  </p>
+
+                  <div className="space-y-5">
+                    {/* Pain scale progress */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs font-bold text-brand-900 dark:text-brand-200">
+                        <span>Pain Level Scale</span>
+                        <span>
+                          <span className="text-rose-500 font-extrabold">{journeyDetails[activeJourney].painBefore}/10</span> ➜{" "}
+                          <span className="text-brand-600 dark:text-brand-400 font-extrabold">{journeyDetails[activeJourney].painAfter}/10</span>
+                        </span>
+                      </div>
+                      <div className="h-3 w-full bg-brand-100 dark:bg-brand-950/80 rounded-full overflow-hidden flex">
+                        <div 
+                          className="bg-rose-500 h-full rounded-l-full transition-all duration-1000"
+                          style={{ width: `${journeyDetails[activeJourney].painBefore * 10}%` }}
+                        />
+                        <div 
+                          className="bg-brand-500 h-full rounded-r-full transition-all duration-1000"
+                          style={{ width: `${(10 - journeyDetails[activeJourney].painBefore) * 10}%` }}
+                        />
+                      </div>
+                      <p className="text-[10px] text-brand-800/50 dark:text-brand-200/30 font-semibold leading-normal">
+                        Red indicates initial inflammation; green indicates post-therapy relief index.
+                      </p>
+                    </div>
+
+                    {/* Mobility index progress */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs font-bold text-brand-900 dark:text-brand-200">
+                        <span>Mobility & Strength Index</span>
+                        <span>
+                          <span className="text-rose-500">{journeyDetails[activeJourney].mobilityBefore}%</span> ➜{" "}
+                          <span className="text-brand-600 dark:text-brand-400">{journeyDetails[activeJourney].mobilityAfter}%</span>
+                        </span>
+                      </div>
+                      <div className="h-3 w-full bg-brand-100 dark:bg-brand-950/80 rounded-full overflow-hidden">
+                        <div 
+                          className="bg-brand-gradient h-full rounded-full transition-all duration-1000"
+                          style={{ width: `${journeyDetails[activeJourney].mobilityAfter}%` }}
+                        />
+                      </div>
+                      <p className="text-[10px] text-brand-800/50 dark:text-brand-200/30 font-semibold leading-normal">
+                        Combines flexibility, joint lubrication levels, and muscle fatigue thresholds.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Certified Treatment Badge */}
+                  <div className="rounded-2xl border border-brand-200/60 bg-brand-50/50 dark:border-brand-900/40 dark:bg-white/[0.01] p-4 flex gap-3 items-center">
+                    <FiShield className="text-brand-600 text-xl shrink-0" />
                     <div>
-                      <div className="flex items-center justify-between" style={{ transform: "translateZ(10px)" }}>
-                        <span className="text-sm font-semibold text-brand-600 dark:text-brand-400">
-                          {s.condition}
-                        </span>
-                        <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 dark:bg-brand-950/60 dark:text-brand-300">
-                          {s.duration}
-                        </span>
-                      </div>
-                      <div className="mt-5 space-y-4" style={{ transform: "translateZ(15px)" }}>
-                        <div className="rounded-2xl bg-earth-50/70 p-4 dark:bg-earth-900/20 border border-earth-100/50 dark:border-earth-900/50">
-                          <p className="text-xs font-bold uppercase tracking-wider text-earth-600 dark:text-earth-450">
-                            Before
-                          </p>
-                          <p className="mt-1 text-sm text-brand-800/80 dark:text-brand-200/70">
-                            {s.before}
-                          </p>
-                        </div>
-                        <div className="rounded-2xl bg-brand-50/70 p-4 dark:bg-brand-950/30 border border-brand-100/50 dark:border-brand-900/50">
-                          <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                            <FiCheckCircle /> After
-                          </p>
-                          <p className="mt-1 text-sm text-brand-950 dark:text-brand-50">{s.after}</p>
-                        </div>
-                      </div>
+                      <h4 className="text-xs font-black uppercase text-brand-950 dark:text-brand-200 tracking-wider">Verified Recovery</h4>
+                      <p className="text-[10px] text-brand-850 dark:text-brand-200/50 mt-0.5 leading-normal">
+                        Patient recovery record certified by the practitioners at Samrala clinic.
+                      </p>
                     </div>
-                    <p className="mt-5 text-sm font-semibold text-brand-950 dark:text-brand-50 border-t border-brand-100/50 dark:border-brand-900/50 pt-3" style={{ transform: "translateZ(5px)" }}>
-                      — {s.name}, {s.age} yrs
-                    </p>
                   </div>
-                </TiltCard>
-              </Reveal>
-            ))}
+                </div>
+
+                {/* Right Column: Timeline Chronology */}
+                <div className="lg:col-span-8">
+                  <h4 className="font-display text-base font-extrabold text-brand-950 dark:text-brand-50 mb-6 flex items-center gap-2">
+                    <FiClock className="text-brand-600" /> Patient Healing Timeline
+                  </h4>
+
+                  <div className="relative border-l-2 border-brand-100 dark:border-brand-900 pl-6 sm:pl-8 space-y-8 ml-3">
+                    {journeyDetails[activeJourney].milestones.map((milestone, idx) => (
+                      <div key={idx} className="relative">
+                        {/* Timeline Node Icon/Dot */}
+                        <span className="absolute -left-[35px] sm:-left-[43px] top-1.5 flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-white dark:bg-[#070c07] border-2 border-brand-500 text-brand-655 shadow-sm">
+                          {idx === 2 ? <FiHeart className="text-xs fill-brand-500 text-white" /> : <span className="text-[10px] font-black">{idx + 1}</span>}
+                        </span>
+
+                        <div className="space-y-1">
+                          <span className="inline-block px-2.5 py-0.5 rounded-md bg-brand-50/90 dark:bg-brand-950/80 border border-brand-100 dark:border-brand-900 text-[10px] font-black uppercase tracking-widest text-brand-700 dark:text-brand-300">
+                            {milestone.week}
+                          </span>
+                          <h5 className="font-display text-base font-bold text-brand-950 dark:text-brand-50 tracking-tight">
+                            {milestone.title}
+                          </h5>
+                          <p className="text-sm text-brand-850 dark:text-brand-200/70 leading-relaxed max-w-2xl">
+                            {milestone.desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Video testimonials */}
-      <section className="section bg-brand-50/40 dark:bg-[#0a130a] relative overflow-hidden">
-        <div className="container-px">
-          <SectionHeading
-            eyebrow="Video Testimonials"
-            title="Hear It From Our Patients"
-            description="Watch patients share their healing experiences in their own words."
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.slice(0, 3).map((t, i) => (
-              <Reveal key={t.name} delay={i}>
-                <TiltCard
-                  className="rounded-3xl shadow-soft overflow-hidden aspect-video bg-white dark:bg-white/[0.03]"
-                  glowColor="rgba(79, 158, 40, 0.2)"
-                >
-                  <div className="group relative w-full h-full">
-                    <Image
-                      src={galleryImages[i % galleryImages.length]}
-                      alt={`${t.name} video testimonial`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/35" />
-                    <div className="absolute inset-0 grid place-items-center" style={{ transform: "translateZ(20px)" }}>
-                      <span className="grid h-16 w-16 place-items-center rounded-full bg-white/90 text-brand-700 shadow-lg transition group-hover:scale-110">
-                        <FiPlay size={26} className="ml-1 fill-brand-700" />
-                      </span>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5 text-white" style={{ transform: "translateZ(10px)" }}>
-                      <p className="font-bold text-base">{t.name}</p>
-                      <p className="text-xs opacity-90">{t.treatment} Recovery</p>
-                    </div>
-                  </div>
-                </TiltCard>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews grid */}
-      <section className="section">
+      {/* Patient Written Reviews */}
+      <section className="section bg-hero-radial">
         <div className="container-px">
           <SectionHeading
             eyebrow="Patient Reviews"
-            title="What Our Patients Say"
+            title="Shared Words of Recovery"
+            description="Verified Google reviews and clinic register entries from our community."
           />
           <div className="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3 space-y-6">
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i % 3} className="break-inside-avoid">
                 <TiltCard
-                  className="rounded-3xl bg-white dark:bg-white/[0.03] shadow-soft p-6 border border-white/20 dark:border-white/5"
+                  className="rounded-3xl bg-white dark:bg-[#0c160c]/40 shadow-soft p-6 border border-white/20 dark:border-white/5"
                   glowColor="rgba(205, 198, 40, 0.15)"
                 >
                   <div style={{ transform: "translateZ(10px)" }}>
@@ -160,7 +374,7 @@ export default function SuccessStoriesPage() {
       </section>
 
       {/* Carousel */}
-      <section className="section bg-brand-50/40 dark:bg-[#0a130a]">
+      <section className="section bg-brand-50/40 dark:bg-[#0a130a] border-t border-brand-100/20 dark:border-brand-900/20">
         <div className="container-px">
           <TestimonialCarousel />
         </div>

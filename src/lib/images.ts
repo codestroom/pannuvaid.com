@@ -7,17 +7,17 @@ export const aboutImage = u("photo-1532938911079-1b06ac7ceec7", 1100);
 export const ctaImage = u("photo-1466637574441-749b8f19452f", 1600);
 
 export const treatmentImages: Record<string, string> = {
-  "knee-pain": u("photo-1544161515-4ab6ce6db874"),
-  "joint-pain": u("photo-1599058917212-d750089bc07e"),
-  arthritis: u("photo-1576091160550-2173dba999ef"),
-  "back-pain": u("photo-1545205597-3d9d02c29597"),
-  sciatica: u("photo-1571019613454-1cb2f99b2d8b"),
-  "cervical-pain": u("photo-1556228578-8c89e6adf883"),
-  "nerve-disorders": u("photo-1518611012118-696072aa579a"),
-  "digestive-disorders": u("photo-1498837167922-ddd27525d352"),
-  "allergy-management": u("photo-1490645935967-10de6ba17061"),
-  "chronic-pain-relief": u("photo-1512678080530-7760d81faba6"),
-  "general-wellness": u("photo-1506126613408-eca07ce68773"),
+  "knee-pain": "/images/treatments/knee-pain.png",
+  "joint-pain": "/images/treatments/joint-pain.png",
+  arthritis: "/images/treatments/arthritis.png",
+  "back-pain": "/images/treatments/back-pain.png",
+  sciatica: "/images/treatments/sciatica.png",
+  "cervical-pain": "/images/treatments/cervical-pain.png",
+  "nerve-disorders": "/images/treatments/nerve-disorders.png",
+  "digestive-disorders": "/images/treatments/digestive-disorders.png",
+  "allergy-management": "/images/treatments/allergy-management.png",
+  "chronic-pain-relief": "/images/treatments/chronic-pain-relief.png",
+  "general-wellness": "/images/treatments/general-wellness.png",
 };
 
 export const blogImages: Record<string, string> = {
