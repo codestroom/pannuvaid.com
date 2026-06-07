@@ -8,12 +8,15 @@ import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { VideoFeedbackGallery } from "@/components/VideoFeedbackGallery";
 import { CTABand } from "@/components/CTABand";
 import { stats } from "@/lib/site";
 import { treatments } from "@/lib/treatments";
 import { successStories } from "@/lib/content";
 import { TiltCard } from "@/components/TiltCard";
 import { ProductShowcase } from "@/components/ProductShowcase";
+import { FeaturedRemedy } from "@/components/FeaturedRemedy";
+import { HealingJourney } from "@/components/HealingJourney";
 
 export const metadata: Metadata = {
   title: "Pannu Vaid — Authentic Ayurvedic Clinic in Samrala, Punjab",
@@ -70,7 +73,13 @@ export default function HomePage() {
             title="Ayurvedic Treatments That Heal at the Root"
             description="From chronic joint pain to digestive health, we offer focused, time-tested Ayurvedic care for a wide range of conditions."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          {/* Featured liver syrup spotlight */}
+          <div className="mt-12">
+            <FeaturedRemedy slug="liver-care-tonic" />
+          </div>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {treatments.slice(0, 6).map((t, i) => (
               <TreatmentCard key={t.slug} slug={t.slug} index={i} />
             ))}
@@ -139,6 +148,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Healing Journey - Animated scroll-driven timeline */}
+      <section className="section relative overflow-hidden">
+        <div className="absolute right-1/4 top-1/4 -z-10 h-80 w-80 rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute left-1/4 bottom-1/4 -z-10 h-72 w-72 rounded-full bg-gold-400/5 blur-3xl pointer-events-none" />
+
+        <div className="container-px">
+          <SectionHeading
+            eyebrow="Your Path to Wellness"
+            title="The Pannu Vaid Healing Journey"
+            description="From your first conversation to lasting recovery — a clear, caring path rooted in authentic Ayurveda."
+          />
+          <HealingJourney />
+        </div>
+      </section>
+
       {/* Success Stories Section - Polaroid Journal Style */}
       <section className="section relative overflow-hidden">
         <div className="absolute right-0 bottom-10 -z-10 h-72 w-72 rounded-full bg-gold-400/5 blur-3xl pointer-events-none" />
@@ -193,6 +217,26 @@ export default function HomePage() {
                 </TiltCard>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Feedback - Real patient reels from the clinic */}
+      <section className="section relative">
+        {/* Decorative blobs kept in their own clipped layer so hover-zoom isn't cut off */}
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute right-1/4 top-10 h-80 w-80 rounded-full bg-brand-500/5 blur-3xl" />
+          <div className="absolute left-1/4 bottom-10 h-72 w-72 rounded-full bg-gold-400/5 blur-3xl" />
+        </div>
+
+        <div className="container-px">
+          <SectionHeading
+            eyebrow="Video Feedback"
+            title="Hear It Straight From Our Patients"
+            description="Real, unscripted feedback from patients who found relief at Pannu Vaid. Tap any video to watch their story."
+          />
+          <div className="mt-12">
+            <VideoFeedbackGallery />
           </div>
         </div>
       </section>

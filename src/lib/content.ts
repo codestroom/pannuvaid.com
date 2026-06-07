@@ -57,6 +57,54 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
+export type VideoFeedback = {
+  src: string;
+  poster: string;
+  label: string;
+  condition: string;
+  productSlug: string;
+};
+
+// Real patient video feedback recorded at the clinic.
+// productSlug links each story to the product the patient was treated with.
+export const videoFeedback: VideoFeedback[] = [
+  {
+    src: "/videos/liver-feedback.mp4",
+    poster: "/videos/liver-feedback.jpg",
+    label: "Liver Health Recovery",
+    condition: "Liver Treatment",
+    productSlug: "liver-care-tonic",
+  },
+  {
+    src: "/videos/arthritis-reel.mp4",
+    poster: "/videos/arthritis-reel.jpg",
+    label: "Relief From Gathiya",
+    condition: "Arthritis / Joint Pain",
+    productSlug: "joint-nerve-capsules",
+  },
+  {
+    src: "/videos/moga-feedback.mp4",
+    poster: "/videos/moga-feedback.jpg",
+    label: "Patient From Moga",
+    condition: "Joint & Nerve Care",
+    productSlug: "joint-nerve-capsules",
+  },
+  {
+    src: "/videos/vaid-feedback.mp4",
+    poster: "/videos/vaid-feedback.jpg",
+    label: "A Word of Thanks",
+    condition: "Liver Treatment",
+    productSlug: "liver-care-tonic",
+  },
+  {
+    src: "/videos/patient-reel.mp4",
+    poster: "/videos/patient-reel.jpg",
+    label: "Patient Experience",
+    condition: "Joint & Nerve Care",
+    productSlug: "joint-nerve-capsules",
+  },
+];
+
 export type SuccessStory = {
   name: string;
   age: number;
