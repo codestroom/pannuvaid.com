@@ -35,7 +35,7 @@ const heroCards = [
   },
   {
     image: "/images/hero/liver-detox.png",
-    title: "Liver Care Tonic",
+    title: "Liver Care",
     desc: "Classical syrup to stimulate liver cells & restore metabolism.",
     rotate: 8,
     x: 35,
