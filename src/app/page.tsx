@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { FiArrowRight, FiCheckCircle, FiChevronRight } from "react-icons/fi";
-import { FaLeaf, FaSeedling, FaAward, FaUserMd, FaHandHoldingHeart } from "react-icons/fa";
+import { FaLeaf, FaAward, FaUserMd, FaHandHoldingHeart, FaUsers, FaMortarPestle, FaHeart } from "react-icons/fa";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
@@ -17,6 +18,8 @@ import { TiltCard } from "@/components/TiltCard";
 import { ProductShowcase } from "@/components/ProductShowcase";
 import { FeaturedRemedy } from "@/components/FeaturedRemedy";
 import { HealingJourney } from "@/components/HealingJourney";
+import { TrustMarquee } from "@/components/TrustMarquee";
+import { herbGrindingImage } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Pannu Vaid — Authentic Ayurvedic Clinic in Samrala, Punjab",
@@ -24,6 +27,8 @@ export const metadata: Metadata = {
     "Welcome to Pannu Vaid, a trusted name in Ayurvedic healthcare in Samrala, Punjab. Specialised, drug-free treatments for joint pain, arthritis, and nerve disorders.",
   alternates: { canonical: "/" },
 };
+
+const statIcons = [FaAward, FaUsers, FaMortarPestle, FaHeart];
 
 const whyChoose = [
   { icon: FaUserMd, title: "Expert Practitioners", desc: "Decades of authentic Ayurvedic experience guiding every treatment plan." },
@@ -43,21 +48,29 @@ export default function HomePage() {
           <Reveal>
             <div className="rounded-[2.5rem] bg-white/70 dark:bg-black/60 shadow-2xl backdrop-blur-xl border border-white/50 dark:border-white/10 p-2">
               <div className="grid grid-cols-2 gap-2 md:grid-cols-4 rounded-[2.2rem] overflow-hidden bg-brand-50/30 dark:bg-[#0c160c]/40 p-4 divide-y md:divide-y-0 md:divide-x divide-brand-100/40 dark:divide-brand-900/40">
-                {stats.map((s, idx) => (
-                  <div key={s.label} className="p-4 sm:p-6 text-center flex flex-col justify-center items-center">
-                    <p className="font-display text-3xl sm:text-4.5xl font-black gradient-text leading-none">
-                      <Counter value={s.value} suffix={s.suffix} />
-                    </p>
-                    <p className="mt-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-850 dark:text-brand-300">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
+                {stats.map((s, idx) => {
+                  const StatIcon = statIcons[idx % statIcons.length];
+                  return (
+                    <div key={s.label} className="group p-4 sm:p-6 text-center flex flex-col justify-center items-center">
+                      <span className="mb-3 grid h-10 w-10 place-items-center rounded-2xl bg-brand-gradient text-white shadow-soft transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                        <StatIcon size={16} />
+                      </span>
+                      <p className="font-display text-3xl sm:text-4.5xl font-black gradient-text leading-none">
+                        <Counter value={s.value} suffix={s.suffix} />
+                      </p>
+                      <p className="mt-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brand-850 dark:text-brand-300">
+                        {s.label}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </Reveal>
         </div>
       </section>
+
+      <TrustMarquee />
 
       <ProductShowcase />
 
@@ -115,6 +128,25 @@ export default function HomePage() {
                 See Patient Results
               </Link>
             </div>
+
+            {/* Traditional herbal medicine preparation */}
+            <Reveal delay={2}>
+              <div className="relative mt-4 overflow-hidden rounded-[2rem] shadow-soft border border-white/20 dark:border-white/5 group">
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src={herbGrindingImage}
+                    alt="Hands grinding raw herbs in a stone mortar — traditional Ayurvedic medicine preparation"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
+                  <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md border border-white/20">
+                    <FaLeaf className="text-brand-300" size={10} /> Hand-Prepared Herbal Medicines
+                  </span>
+                </div>
+              </div>
+            </Reveal>
           </div>
           
           <div className="lg:col-span-7 grid gap-5 sm:grid-cols-2">

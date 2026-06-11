@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { FiCheck, FiPlay, FiClock, FiActivity, FiArrowRight, FiShield, FiHeart } from "react-icons/fi";
-import { FaLeaf, FaPlay, FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FiCheck, FiX, FiClock, FiActivity, FiArrowDown, FiShield, FiHeart } from "react-icons/fi";
+import { FaLeaf, FaPlay } from "react-icons/fa";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
@@ -13,7 +13,6 @@ import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { CTABand } from "@/components/CTABand";
 import { successStories, testimonials, videoFeedback } from "@/lib/content";
 import { TiltCard } from "@/components/TiltCard";
-import { site } from "@/lib/site";
 
 // Detailed journey timeline data linked to success stories
 const journeyDetails = [
@@ -121,8 +120,8 @@ export default function SuccessStoriesPage() {
         <div className="container-px">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <Reveal>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50">
-                🎥 Patient Video Diaries
+              <span className="inline-flex items-center gap-2 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50 shadow-sm">
+                <FaPlay className="text-brand-500" size={9} /> Patient Video Diaries
               </span>
             </Reveal>
             <Reveal delay={1}>
@@ -175,8 +174,9 @@ export default function SuccessStoriesPage() {
 
                       {/* Play Button overlay */}
                       <div className="absolute inset-0 flex items-center justify-center z-20">
-                        <span className="h-14 w-14 rounded-full bg-brand-gradient text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                          <FaPlay className="text-sm ml-1" />
+                        <span className="relative h-14 w-14 rounded-full bg-brand-gradient text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                          <span className="absolute inset-0 rounded-full bg-brand-400/50 opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+                          <FaPlay className="relative text-sm ml-1" />
                         </span>
                       </div>
 
@@ -241,8 +241,8 @@ export default function SuccessStoriesPage() {
                   </p>
 
                   <div className="space-y-5">
-                    {/* Pain scale progress */}
-                    <div className="space-y-2">
+                    {/* Pain scale: clear before vs after bars */}
+                    <div className="space-y-2.5">
                       <div className="flex justify-between text-xs font-bold text-brand-900 dark:text-brand-200">
                         <span>Pain Level Scale</span>
                         <span>
@@ -250,23 +250,37 @@ export default function SuccessStoriesPage() {
                           <span className="text-brand-600 dark:text-brand-400 font-extrabold">{journeyDetails[activeJourney].painAfter}/10</span>
                         </span>
                       </div>
-                      <div className="h-3 w-full bg-brand-100 dark:bg-brand-950/80 rounded-full overflow-hidden flex">
-                        <div 
-                          className="bg-rose-500 h-full rounded-l-full transition-all duration-1000"
-                          style={{ width: `${journeyDetails[activeJourney].painBefore * 10}%` }}
-                        />
-                        <div 
-                          className="bg-brand-500 h-full rounded-r-full transition-all duration-1000"
-                          style={{ width: `${(10 - journeyDetails[activeJourney].painBefore) * 10}%` }}
-                        />
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-12 shrink-0 text-[10px] font-black uppercase tracking-wider text-rose-500">Before</span>
+                        <div className="h-2.5 flex-1 rounded-full bg-brand-100 dark:bg-brand-950/80 overflow-hidden">
+                          <motion.div
+                            key={`pain-before-${activeJourney}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${journeyDetails[activeJourney].painBefore * 10}%` }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                            className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-600"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-12 shrink-0 text-[10px] font-black uppercase tracking-wider text-brand-600 dark:text-brand-400">After</span>
+                        <div className="h-2.5 flex-1 rounded-full bg-brand-100 dark:bg-brand-950/80 overflow-hidden">
+                          <motion.div
+                            key={`pain-after-${activeJourney}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${Math.max(journeyDetails[activeJourney].painAfter * 10, 2)}%` }}
+                            transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
+                            className="h-full rounded-full bg-brand-gradient"
+                          />
+                        </div>
                       </div>
                       <p className="text-[10px] text-brand-800/50 dark:text-brand-200/30 font-semibold leading-normal">
-                        Red indicates initial inflammation; green indicates post-therapy relief index.
+                        Self-reported pain before therapy vs. after completing the protocol.
                       </p>
                     </div>
 
-                    {/* Mobility index progress */}
-                    <div className="space-y-2">
+                    {/* Mobility index: before vs after bars */}
+                    <div className="space-y-2.5">
                       <div className="flex justify-between text-xs font-bold text-brand-900 dark:text-brand-200">
                         <span>Mobility & Strength Index</span>
                         <span>
@@ -274,11 +288,29 @@ export default function SuccessStoriesPage() {
                           <span className="text-brand-600 dark:text-brand-400">{journeyDetails[activeJourney].mobilityAfter}%</span>
                         </span>
                       </div>
-                      <div className="h-3 w-full bg-brand-100 dark:bg-brand-950/80 rounded-full overflow-hidden">
-                        <div 
-                          className="bg-brand-gradient h-full rounded-full transition-all duration-1000"
-                          style={{ width: `${journeyDetails[activeJourney].mobilityAfter}%` }}
-                        />
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-12 shrink-0 text-[10px] font-black uppercase tracking-wider text-rose-500">Before</span>
+                        <div className="h-2.5 flex-1 rounded-full bg-brand-100 dark:bg-brand-950/80 overflow-hidden">
+                          <motion.div
+                            key={`mob-before-${activeJourney}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${journeyDetails[activeJourney].mobilityBefore}%` }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                            className="h-full rounded-full bg-gradient-to-r from-rose-400 to-rose-600"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-12 shrink-0 text-[10px] font-black uppercase tracking-wider text-brand-600 dark:text-brand-400">After</span>
+                        <div className="h-2.5 flex-1 rounded-full bg-brand-100 dark:bg-brand-950/80 overflow-hidden">
+                          <motion.div
+                            key={`mob-after-${activeJourney}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${journeyDetails[activeJourney].mobilityAfter}%` }}
+                            transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
+                            className="h-full rounded-full bg-brand-gradient"
+                          />
+                        </div>
                       </div>
                       <p className="text-[10px] text-brand-800/50 dark:text-brand-200/30 font-semibold leading-normal">
                         Combines flexibility, joint lubrication levels, and muscle fatigue thresholds.
@@ -330,6 +362,84 @@ export default function SuccessStoriesPage() {
 
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Before & After Case Files */}
+      <section className="section relative overflow-hidden">
+        <div className="absolute left-1/4 top-1/3 -z-10 h-80 w-80 rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute right-1/4 bottom-10 -z-10 h-72 w-72 rounded-full bg-gold-400/5 blur-3xl pointer-events-none" />
+
+        <div className="container-px">
+          <SectionHeading
+            eyebrow="Case Files"
+            title="Before & After Treatment"
+            description="Documented patient transformations — where they started, and where authentic Ayurveda brought them."
+          />
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {successStories.map((s, i) => (
+              <Reveal key={s.name} delay={i}>
+                <TiltCard
+                  className="h-full rounded-[2rem] bg-white dark:bg-[#0c160c]/40 shadow-soft border border-white/20 dark:border-white/5 overflow-hidden"
+                  glowColor="rgba(79, 158, 40, 0.15)"
+                >
+                  <div className="flex h-full flex-col p-7">
+                    {/* Case header */}
+                    <div className="flex items-center justify-between" style={{ transform: "translateZ(10px)" }}>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-450">
+                        <FaLeaf className="text-brand-500" size={10} /> {s.condition}
+                      </span>
+                      <span className="rounded-full bg-brand-50 px-3 py-1 text-[11px] font-bold text-brand-700 dark:bg-brand-950/60 dark:text-brand-350 border border-brand-100/30 dark:border-brand-900/30 inline-flex items-center gap-1.5">
+                        <FiClock size={11} /> {s.duration}
+                      </span>
+                    </div>
+
+                    {/* Before / After comparison */}
+                    <div className="mt-6 flex-1" style={{ transform: "translateZ(15px)" }}>
+                      <div className="rounded-2xl bg-rose-50/60 p-4 dark:bg-rose-950/15 border border-rose-100/50 dark:border-rose-900/20">
+                        <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-rose-600 dark:text-rose-400">
+                          <FiX size={12} strokeWidth={3} /> Before Treatment
+                        </span>
+                        <p className="mt-1.5 text-sm text-brand-850 dark:text-brand-200/70 leading-relaxed font-medium">
+                          {s.before}
+                        </p>
+                      </div>
+
+                      <div className="relative z-10 -my-2.5 flex justify-center">
+                        <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-gradient text-white shadow-md border-2 border-white dark:border-[#0c160c]">
+                          <FiArrowDown size={15} strokeWidth={3} />
+                        </span>
+                      </div>
+
+                      <div className="rounded-2xl bg-brand-50/60 p-4 dark:bg-brand-950/30 border border-brand-100/50 dark:border-brand-900/30">
+                        <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-brand-600 dark:text-brand-400">
+                          <FiCheck size={12} strokeWidth={3} /> After Treatment
+                        </span>
+                        <p className="mt-1.5 text-sm text-brand-950 dark:text-brand-50 leading-relaxed font-bold">
+                          {s.after}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Patient footer */}
+                    <div className="mt-6 flex items-center gap-3 border-t border-brand-100/50 dark:border-brand-900/50 pt-4" style={{ transform: "translateZ(5px)" }}>
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient text-sm font-bold text-white shadow-soft">
+                        {s.name.charAt(0)}
+                      </span>
+                      <div>
+                        <p className="text-sm font-bold text-brand-950 dark:text-brand-50">{s.name}</p>
+                        <p className="text-xs text-brand-800/60 dark:text-brand-200/50">{s.age} years • Samrala Clinic</p>
+                      </div>
+                      <div className="ml-auto">
+                        <Stars count={5} />
+                      </div>
+                    </div>
+                  </div>
+                </TiltCard>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

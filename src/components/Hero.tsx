@@ -153,7 +153,33 @@ export function Hero() {
               className="mt-6 font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-7xl tracking-tight text-brand-950 dark:text-brand-50"
             >
               Natural Healing <br className="hidden sm:inline" />
-              Through <span className="gradient-text">Ayurveda</span>
+              Through{" "}
+              <span className="relative inline-block">
+                <span className="gradient-text">Ayurveda</span>
+                <motion.svg
+                  aria-hidden
+                  viewBox="0 0 220 14"
+                  fill="none"
+                  className="absolute -bottom-2 left-0 w-full sm:-bottom-3"
+                  preserveAspectRatio="none"
+                >
+                  <motion.path
+                    d="M4 10 C 60 3, 160 2, 216 8"
+                    stroke="url(#hero-underline)"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }}
+                  />
+                  <defs>
+                    <linearGradient id="hero-underline" x1="0" y1="0" x2="220" y2="0" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#4f9e28" />
+                      <stop offset="1" stopColor="#cdc628" />
+                    </linearGradient>
+                  </defs>
+                </motion.svg>
+              </span>
             </motion.h1>
 
             <motion.p
@@ -224,6 +250,49 @@ export function Hero() {
 
           {/* Interactive 3D Stacked Card Deck */}
           <div className="relative flex justify-center items-center lg:col-span-5 h-[340px] md:h-[420px] lg:h-[450px]">
+            {/* Floating trust chips around the deck */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="pointer-events-none absolute -top-2 left-2 md:left-6 z-40 hidden sm:block"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="glass-card flex items-center gap-2.5 rounded-2xl px-4 py-2.5"
+              >
+                <span className="grid h-8 w-8 place-items-center rounded-xl bg-brand-gradient text-white">
+                  <FaLeaf size={13} />
+                </span>
+                <div className="leading-tight">
+                  <p className="text-sm font-extrabold text-brand-950 dark:text-brand-50">25+ Years</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-brand-700/70 dark:text-brand-300/60">of Healing</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="pointer-events-none absolute bottom-2 right-2 md:right-6 z-40 hidden sm:block"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="glass-card flex items-center gap-2.5 rounded-2xl px-4 py-2.5"
+              >
+                <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 text-white">
+                  <FaStar size={13} />
+                </span>
+                <div className="leading-tight">
+                  <p className="text-sm font-extrabold text-brand-950 dark:text-brand-50">50,000+</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-brand-700/70 dark:text-brand-300/60">Patients Healed</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
             <motion.div
               ref={containerRef}
               className="relative w-[280px] md:w-[320px] h-[340px] md:h-[380px] cursor-pointer"

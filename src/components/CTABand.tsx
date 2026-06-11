@@ -60,8 +60,8 @@ export function CTABand() {
             <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-white/25 blur-3xl" />
 
             <div className="relative mx-auto max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur mb-6">
-                🌿 Start Healing
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur mb-6 border border-white/15">
+                <FaLeaf className="text-gold-200" size={11} /> Start Healing
               </span>
               <h2 className="font-display text-3xl font-extrabold sm:text-5xl leading-tight text-white tracking-tight">
                 Begin Your Natural Healing Journey Today

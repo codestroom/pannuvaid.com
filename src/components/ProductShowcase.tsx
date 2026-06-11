@@ -19,8 +19,8 @@ export function ProductShowcase() {
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
           <Reveal>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50">
-              🌿 Classical Apothecary
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50 shadow-sm">
+              <FaLeaf className="text-brand-500" size={11} /> Classical Apothecary
             </span>
           </Reveal>
           <Reveal delay={1}>
