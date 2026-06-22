@@ -16,6 +16,7 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/treatments", label: "Treatments", mega: true },
   { href: "/success-stories", label: "Success Stories" },
+  { href: "/langar-sewa", label: "Langar Sewa" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];

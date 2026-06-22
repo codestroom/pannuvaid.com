@@ -43,6 +43,7 @@ export function Footer() {
               { href: "/about", label: "About Us" },
               { href: "/treatments", label: "Treatments" },
               { href: "/success-stories", label: "Success Stories" },
+              { href: "/langar-sewa", label: "Langar Sewa" },
               { href: "/blog", label: "Blog" },
               { href: "/contact", label: "Contact" },
             ].map((l) => (

@@ -40,6 +40,17 @@ export const blogImages: Record<string, string> = {
   "everyday-wellness-tips-from-ayurveda": u("photo-1545205597-3d9d02c29597"),
 };
 
+// Langar Sewa — community kitchen & free meal seva (local photography)
+export const langarImages = {
+  entranceSign: "/images/langar/entrance-sign.jpg",
+  langarHall: "/images/langar/langar-hall.jpg",
+  diningHall: "/images/langar/dining-hall.jpg",
+  communityCooking: "/images/langar/community-cooking.jpg",
+  cookingStove: "/images/langar/cooking-stove.jpg",
+  kitchenCounter: "/images/langar/kitchen-counter.jpg",
+  kitchenPrep: "/images/langar/kitchen-prep.jpg",
+} as const;
+
 export const galleryImages = [
   u("photo-1556760544-74068565f05c"),
   u("photo-1544161515-4ab6ce6db874"),

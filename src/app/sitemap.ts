@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/treatments",
     "/success-stories",
+    "/langar-sewa",
     "/blog",
     "/contact",
   ].map((path) => ({
