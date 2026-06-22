@@ -210,7 +210,7 @@ export default function AboutPage() {
                   <div className="relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border border-white/20 dark:border-white/5">
                     <Image
                       src={medicineMakingImage}
-                      alt="Traditional preparation of Ayurvedic medicine — grinding herbs in a brass mortar"
+                      alt="Traditional preparation of Ayurvedic medicine — grinding herbs in a stone mortar and pestle"
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"

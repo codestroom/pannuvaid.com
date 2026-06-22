@@ -10,8 +10,8 @@ export const aboutImage = u("photo-1506368249639-73a05d6f6488", 1100);
 export const aboutSecondaryImage = u("photo-1515377905703-c4788e51af15", 800);
 // Sunrise meditation
 export const ctaImage = u("photo-1506126613408-eca07ce68773", 1600);
-// Traditional Indian woman grinding herbs in a brass mortar — authentic ayurvedic medicine making
-export const medicineMakingImage = u("photo-1768729340731-85e386e62529", 1100);
+// Herbs being ground with a stone mortar & pestle — authentic ayurvedic medicine making
+export const medicineMakingImage = u("photo-1492552085122-36706c238263", 1100);
 // Herbal oil being poured into a stone mortar & pestle
 export const herbalPreparationImage = u("photo-1492552181161-62217fc3076d", 900);
 // Hands grinding raw herbs in a stone mortar
