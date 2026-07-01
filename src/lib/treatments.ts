@@ -44,6 +44,54 @@ export const treatments: Treatment[] = [
     ],
   },
   {
+    slug: "nerve-disorders",
+    title: "Brain & Nerve Care",
+    short: "Nourish and rejuvenate the nervous system and brain function naturally.",
+    icon: FaBrain,
+    overview:
+      "Brain fog, neuropathy, numbness, and nerve weakness are addressed with rejuvenating Rasayana therapies and specialised nervous system nourishment to restore clarity and sensation.",
+    symptoms: ["Numbness or tingling", "Muscle weakness", "Burning sensation", "Poor coordination", "Tremors", "Brain fatigue or fog"],
+    causes: ["Nerve aggravation", "Diabetes complications", "Nutrient deficiency", "Nerve compression", "Ageing"],
+    approach: ["Nervine Rasayana therapy", "Medicated oil treatments", "Shirodhara for the nervous system", "Dietary nourishment", "Stress reduction"],
+    benefits: ["Improved sensation", "Better strength", "Calmer nervous system", "Enhanced coordination"],
+    faqs: [
+      { q: "Can diabetic neuropathy be helped?", a: "Yes, alongside blood-sugar control we nourish nerves to reduce tingling and numbness." },
+      { q: "How long is the protocol?", a: "Nerve healing is gradual; protocols typically run 8–12 weeks for meaningful improvement." },
+    ],
+  },
+  {
+    slug: "digestive-disorders",
+    title: "Liver & Digestive Care",
+    short: "Restore liver health, gut balance, and metabolic fire (Agni).",
+    icon: FaSeedling,
+    overview:
+      "Ayurveda views digestion (Agni) as the root of health. We treat sluggish liver, fatty liver, acidity, IBS, and constipation by restoring liver enzymes and digestive balance.",
+    symptoms: ["Acidity & heartburn", "Bloating & gas", "Irregular bowels", "Indigestion", "Low appetite", "Sluggish metabolism"],
+    causes: ["Weak digestive fire", "Poor diet", "Stress", "Irregular meals", "Digestive imbalance"],
+    approach: ["Agni-restoring herbs", "Deepana-Pachana therapy", "Personalised diet plan", "Gut-cleansing protocol", "Lifestyle routine (Dinacharya)"],
+    benefits: ["Comfortable digestion", "Regular bowels", "Better nutrient absorption", "Increased energy"],
+    faqs: [
+      { q: "Can chronic acidity be cured?", a: "Yes, by correcting root causes most patients gain lasting relief without antacids." },
+      { q: "Do you treat IBS?", a: "We have a strong track record managing IBS through diet, herbs, and stress balance." },
+    ],
+  },
+  {
+    slug: "allergy-management",
+    title: "Allergy & Immunity",
+    short: "Strengthen immunity and reduce recurring allergic reactions.",
+    icon: FaShieldVirus,
+    overview:
+      "Recurring allergies signal a sensitive immune system and toxin buildup. We detoxify and rebuild immunity to reduce flare-ups naturally.",
+    symptoms: ["Sneezing & congestion", "Skin rashes & itching", "Watery eyes", "Recurring sinus issues", "Breathing discomfort"],
+    causes: ["Weak immunity", "Ama accumulation", "Internal imbalance", "Environmental triggers", "Poor gut health"],
+    approach: ["Immune-strengthening Rasayana", "Detox therapy", "Anti-allergic herbs", "Trigger avoidance plan", "Nasya therapy"],
+    benefits: ["Fewer flare-ups", "Stronger immunity", "Clearer breathing", "Healthier skin"],
+    faqs: [
+      { q: "Can seasonal allergies be reduced?", a: "Yes, preventive Ayurvedic care before seasons greatly reduces severity." },
+      { q: "Do you treat skin allergies?", a: "We address skin allergies through internal detox and topical herbal support." },
+    ],
+  },
+  {
     slug: "joint-pain",
     title: "Joint Pain",
     short: "Holistic relief for aching, inflamed joints across the body.",
@@ -60,22 +108,6 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: "arthritis",
-    title: "Arthritis",
-    short: "Manage rheumatoid & osteoarthritis with proven herbal care.",
-    icon: FaHandHoldingMedical,
-    overview:
-      "Arthritis responds remarkably well to Ayurveda. We focus on halting progression, easing inflammation, and rebuilding joint integrity.",
-    symptoms: ["Chronic joint inflammation", "Deformity over time", "Severe stiffness", "Persistent pain", "Reduced grip strength"],
-    causes: ["Autoimmune response", "Ama toxins", "Genetic predisposition", "Metabolic imbalance", "Poor metabolism"],
-    approach: ["Arthritis-specific protocol", "Virechana & Basti therapy", "Herbal decoctions", "Anti-inflammatory diet", "Stress & sleep management"],
-    benefits: ["Slowed disease progression", "Reduced flare-ups", "Better quality of life", "Stronger joints"],
-    faqs: [
-      { q: "Can Ayurveda reverse arthritis?", a: "While severe structural damage can't be reversed, we significantly reduce symptoms and stop further progression in most patients." },
-      { q: "Will I need lifelong medication?", a: "Many patients reduce or stop conventional medication under guidance after responding to treatment." },
-    ],
-  },
-  {
     slug: "back-pain",
     title: "Back Pain",
     short: "Targeted spinal care for chronic and acute back pain.",
@@ -89,6 +121,22 @@ export const treatments: Treatment[] = [
     faqs: [
       { q: "Do you treat slipped disc?", a: "Yes, we manage many disc-related conditions conservatively with specialised Panchakarma and herbs." },
       { q: "Is bed rest required?", a: "We recommend guided gentle movement rather than prolonged rest for faster recovery." },
+    ],
+  },
+  {
+    slug: "arthritis",
+    title: "Arthritis",
+    short: "Manage rheumatoid & osteoarthritis with proven herbal care.",
+    icon: FaHandHoldingMedical,
+    overview:
+      "Arthritis responds remarkably well to Ayurveda. We focus on halting progression, easing inflammation, and rebuilding joint integrity.",
+    symptoms: ["Chronic joint inflammation", "Deformity over time", "Severe stiffness", "Persistent pain", "Reduced grip strength"],
+    causes: ["Autoimmune response", "Ama toxins", "Genetic predisposition", "Metabolic imbalance", "Poor metabolism"],
+    approach: ["Arthritis-specific protocol", "Virechana & Basti therapy", "Herbal decoctions", "Anti-inflammatory diet", "Stress & sleep management"],
+    benefits: ["Slowed disease progression", "Reduced flare-ups", "Better quality of life", "Stronger joints"],
+    faqs: [
+      { q: "Can Ayurveda reverse arthritis?", a: "While severe structural damage can't be reversed, we significantly reduce symptoms and stop further progression in most patients." },
+      { q: "Will I need lifelong medication?", a: "Many patients reduce or stop conventional medication under guidance after responding to treatment." },
     ],
   },
   {
@@ -124,54 +172,6 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: "nerve-disorders",
-    title: "Nerve Disorders",
-    short: "Nourish and rejuvenate the nervous system naturally.",
-    icon: FaBrain,
-    overview:
-      "Neuropathy, numbness, and nerve weakness are addressed with rejuvenating Rasayana therapies and specialised nerve nourishment.",
-    symptoms: ["Numbness or tingling", "Muscle weakness", "Burning sensation", "Poor coordination", "Tremors"],
-    causes: ["Nerve aggravation", "Diabetes complications", "Nutrient deficiency", "Nerve compression", "Ageing"],
-    approach: ["Nervine Rasayana therapy", "Medicated oil treatments", "Shirodhara for the nervous system", "Dietary nourishment", "Stress reduction"],
-    benefits: ["Improved sensation", "Better strength", "Calmer nervous system", "Enhanced coordination"],
-    faqs: [
-      { q: "Can diabetic neuropathy be helped?", a: "Yes, alongside blood-sugar control we nourish nerves to reduce tingling and numbness." },
-      { q: "How long is the protocol?", a: "Nerve healing is gradual; protocols typically run 8–12 weeks for meaningful improvement." },
-    ],
-  },
-  {
-    slug: "digestive-disorders",
-    title: "Digestive Disorders",
-    short: "Restore gut balance, digestion, and metabolic fire (Agni).",
-    icon: FaSeedling,
-    overview:
-      "Ayurveda views digestion (Agni) as the root of health. We treat acidity, IBS, bloating, and constipation by restoring digestive balance.",
-    symptoms: ["Acidity & heartburn", "Bloating & gas", "Irregular bowels", "Indigestion", "Low appetite"],
-    causes: ["Weak digestive fire", "Poor diet", "Stress", "Irregular meals", "Digestive imbalance"],
-    approach: ["Agni-restoring herbs", "Deepana-Pachana therapy", "Personalised diet plan", "Gut-cleansing protocol", "Lifestyle routine (Dinacharya)"],
-    benefits: ["Comfortable digestion", "Regular bowels", "Better nutrient absorption", "Increased energy"],
-    faqs: [
-      { q: "Can chronic acidity be cured?", a: "Yes, by correcting root causes most patients gain lasting relief without antacids." },
-      { q: "Do you treat IBS?", a: "We have a strong track record managing IBS through diet, herbs, and stress balance." },
-    ],
-  },
-  {
-    slug: "allergy-management",
-    title: "Allergy Management",
-    short: "Strengthen immunity and reduce recurring allergic reactions.",
-    icon: FaShieldVirus,
-    overview:
-      "Recurring allergies signal a sensitive immune system and toxin buildup. We detoxify and rebuild immunity to reduce flare-ups naturally.",
-    symptoms: ["Sneezing & congestion", "Skin rashes & itching", "Watery eyes", "Recurring sinus issues", "Breathing discomfort"],
-    causes: ["Weak immunity", "Ama accumulation", "Internal imbalance", "Environmental triggers", "Poor gut health"],
-    approach: ["Immune-strengthening Rasayana", "Detox therapy", "Anti-allergic herbs", "Trigger avoidance plan", "Nasya therapy"],
-    benefits: ["Fewer flare-ups", "Stronger immunity", "Clearer breathing", "Healthier skin"],
-    faqs: [
-      { q: "Can seasonal allergies be reduced?", a: "Yes, preventive Ayurvedic care before seasons greatly reduces severity." },
-      { q: "Do you treat skin allergies?", a: "We address skin allergies through internal detox and topical herbal support." },
-    ],
-  },
-  {
     slug: "chronic-pain-relief",
     title: "Chronic Pain Relief",
     short: "Long-term, drug-free management of persistent pain.",
@@ -201,6 +201,38 @@ export const treatments: Treatment[] = [
     faqs: [
       { q: "Do I need to be sick to benefit?", a: "Not at all — preventive care keeps you healthy and helps you feel your best." },
       { q: "Is there a wellness package?", a: "Yes, we offer customised seasonal and rejuvenation packages." },
+    ],
+  },
+  {
+    slug: "diabetes-care",
+    title: "Diabetes Care",
+    short: "Manage blood sugar levels and prevent diabetic complications naturally.",
+    icon: FaHeartbeat,
+    overview:
+      "Diabetes (Madhumeha) is addressed through metabolic correction (Agni restoration), panchakarma detox, and specialized herbal formulations to regulate insulin secretion and protect vital organs from diabetic complications.",
+    symptoms: ["High blood sugar levels", "Frequent urination", "Excessive thirst & hunger", "Slow healing wounds", "Fatigue & weakness"],
+    causes: ["Impaired metabolic fire (Agni)", "Sedentary lifestyle", "Toxin (Ama) accumulation", "Genetic factors", "High-stress levels"],
+    approach: ["Metabolic correction therapies", "Insulin-supporting herbs", "Detoxification (Panchakarma)", "Dietary guidelines", "Daily activity planning"],
+    benefits: ["Stabilized blood sugar levels", "Reduced dependency on chemical drugs", "Protection against neuropathy & retinopathy", "Higher energy levels"],
+    faqs: [
+      { q: "Can long-term diabetes be managed?", a: "Yes, we focus on restoring your metabolic health to manage sugar levels and prevent organ complications." },
+      { q: "Are your herbal remedies safe?", a: "Absolutely. Our herbal formulations are 100% natural, non-toxic, and support pancreas function." },
+    ],
+  },
+  {
+    slug: "ear-care",
+    title: "Ear & Tinnitus Care",
+    short: "Relieve ear buzzing (tinnitus) and improve auditory health naturally.",
+    icon: FaNotesMedical,
+    overview:
+      "Ear problems like Tinnitus (Karna Nada), ear discharge, and mild hearing loss are addressed using traditional Karnapoorana (medicated oil pooling in ears) and Vata-pacifying therapies to restore auditory function.",
+    symptoms: ["Ringing or buzzing in ears (Tinnitus)", "Ear pain or stiffness", "Mild hearing impairment", "Sensation of ear blockage", "Dryness in ear canal"],
+    causes: ["Aggravated Vata dosha", "Exposure to loud noise", "Nerve weakness", "Sinusitis congestion", "Ageing"],
+    approach: ["Karnapoorana (Ear oil pooling)", "Nervine Rasayana formulations", "Nasya (Nasal drop therapy)", "Vata-reducing diet plan", "Head massage (Shiroabhyanga)"],
+    benefits: ["Significant reduction in buzzing noise", "Improved hearing clarity", "Relief from ear pain & congestion", "Better sleep and calm mind"],
+    faqs: [
+      { q: "Does Karnapoorana therapy hurt?", a: "Not at all. It is a highly soothing therapy where warm, medicated herbal oils are pooled in the ears." },
+      { q: "How soon can I expect results for tinnitus?", a: "Most patients notice a reduction in the ringing frequency and intensity within 3–4 weeks." },
     ],
   },
 ];

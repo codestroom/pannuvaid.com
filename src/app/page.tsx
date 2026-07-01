@@ -83,8 +83,8 @@ export default function HomePage() {
         <div className="container-px">
           <SectionHeading
             eyebrow="Our Specialities"
-            title="Ayurvedic Treatments That Heal at the Root"
-            description="From chronic joint pain to digestive health, we offer focused, time-tested Ayurvedic care for a wide range of conditions."
+            title="Pannu Vaid Treatments That Heal at the Root"
+            description="Specialising in Brain & Nerve Care, Liver & Digestive health, Allergies, and chronic joint/spine pain."
           />
 
           {/* Featured liver syrup spotlight */}
@@ -117,8 +117,8 @@ export default function HomePage() {
             <SectionHeading
               align="left"
               eyebrow="Why Choose Pannu Vaid"
-              title="A Trusted Name in Ayurvedic Healing"
-              description="We blend ancient Ayurvedic wisdom with a compassionate, modern patient experience — earning the trust of families across Punjab."
+              title="A Legacy of Authentic Healing"
+              description="We blend ancient Ayurvedic wisdom with a compassionate, modern patient experience — establishing Pannu Vaid as Punjab's most trusted name."
             />
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/about" className="btn bg-brand-800 text-white hover:bg-brand-900 shadow-md hover:-translate-y-0.5 transition-all duration-300 font-bold px-6 py-3.5 inline-flex items-center gap-1.5 group">

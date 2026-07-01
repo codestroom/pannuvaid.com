@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import type { IconType } from "react-icons";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { FaRegCommentDots, FaBalanceScale, FaMortarPestle, FaSpa, FaHeartbeat } from "react-icons/fa";
+import { FaRegCommentDots, FaBalanceScale, FaMortarPestle, FaHeartbeat } from "react-icons/fa";
 
 type Step = {
   icon: IconType;
@@ -20,17 +20,12 @@ const steps: Step[] = [
   {
     icon: FaBalanceScale,
     title: "Root-Cause Diagnosis",
-    desc: "An authentic Ayurvedic assessment pinpoints the true root of your condition and exactly what's out of balance.",
+    desc: "An authentic assessment by Pannu Vaid pinpoints the true root of your condition and exactly what's out of balance.",
   },
   {
     icon: FaMortarPestle,
     title: "Personalised Herbal Plan",
     desc: "Pure, root-cause herbal formulations are prepared and tailored precisely to your unique constitution.",
-  },
-  {
-    icon: FaSpa,
-    title: "Therapy & Panchakarma",
-    desc: "Guided therapies and gentle detox treatments accelerate healing and restore your body's natural rhythm.",
   },
   {
     icon: FaHeartbeat,

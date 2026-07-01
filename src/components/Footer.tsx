@@ -12,7 +12,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm text-brand-800/70 dark:text-brand-200/60">
-            Authentic Ayurvedic healing in Samrala, Punjab — blending traditional
+            Authentic healing with Pannu Vaid in Samrala, Punjab — blending traditional
             wisdom with personalised, root-cause care.
           </p>
           <div className="mt-5 flex gap-3">
@@ -100,7 +100,7 @@ export function Footer() {
         <div className="container-px flex flex-col items-center justify-between gap-2 text-xs text-brand-800/60 dark:text-brand-200/50 sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <p>
-            Ayurvedic care in Samrala, Punjab • Made with care for your wellness.
+            Pannu Vaid's authentic care in Samrala, Punjab • Made with care for your wellness.
           </p>
         </div>
       </div>

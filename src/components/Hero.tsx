@@ -7,7 +7,7 @@ import { useRef, useEffect } from "react";
 import { FaLeaf, FaWhatsapp, FaStar } from "react-icons/fa";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import { site, trustBadges } from "@/lib/site";
-import { heroImage } from "@/lib/images";
+import { heroImage, pannuVaidWriting } from "@/lib/images";
 import { TiltCard } from "./TiltCard";
 
 const heroCards = [
@@ -143,7 +143,7 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
               </span>
-              <span>Trusted Ayurvedic Care in Punjab</span>
+              <span>Trusted Care by Pannu Vaid</span>
             </motion.div>
 
             <motion.h1
@@ -153,9 +153,9 @@ export function Hero() {
               className="mt-6 font-display text-4xl font-extrabold leading-[1.08] sm:text-6xl lg:text-7xl tracking-tight text-brand-950 dark:text-brand-50"
             >
               Natural Healing <br className="hidden sm:inline" />
-              Through{" "}
+              With{" "}
               <span className="relative inline-block">
-                <span className="gradient-text">Ayurveda</span>
+                <span className="gradient-text">Pannu Vaid</span>
                 <motion.svg
                   aria-hidden
                   viewBox="0 0 220 14"
@@ -188,7 +188,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-6 max-w-xl text-base sm:text-lg text-brand-800/80 dark:text-brand-200/70 leading-relaxed"
             >
-              Experience personalised, root-cause Ayurvedic therapy designed for your unique constitution. Restoring balance, health, and vitality without any side effects.
+              Experience personalised, root-cause healing by Pannu Vaid. Our authentic Ayurvedic therapies are designed for your unique constitution to restore balance, health, and vitality.
             </motion.p>
 
             <motion.div
@@ -287,7 +287,7 @@ export function Hero() {
                   <FaStar size={13} />
                 </span>
                 <div className="leading-tight">
-                  <p className="text-sm font-extrabold text-brand-950 dark:text-brand-50">50,000+</p>
+                  <p className="text-sm font-extrabold text-brand-950 dark:text-brand-50">2 Lakh+</p>
                   <p className="text-[10px] font-semibold uppercase tracking-wider text-brand-700/70 dark:text-brand-300/60">Patients Healed</p>
                 </div>
               </motion.div>
@@ -295,68 +295,44 @@ export function Hero() {
 
             <motion.div
               ref={containerRef}
-              className="relative w-[280px] md:w-[320px] h-[340px] md:h-[380px] cursor-pointer"
-              whileHover="hover"
+              className="relative w-[300px] md:w-[350px] h-[350px] md:h-[400px] cursor-pointer"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
             >
-              {heroCards.map((card, idx) => {
-                // Stacked states and hover expansion coordinates
-                const hoverX = idx === 0 ? -140 : idx === 2 ? 140 : 0;
-                const hoverY = idx === 0 ? 10 : idx === 2 ? 15 : -15;
-                const hoverRotate = idx === 0 ? -12 : idx === 2 ? 12 : 0;
+              <TiltCard
+                className="w-full h-full rounded-[2.5rem] bg-white shadow-2xl dark:bg-white/[0.04] overflow-hidden"
+                glowColor="rgba(79, 158, 40, 0.25)"
+              >
+                <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden flex flex-col justify-end p-6 border border-white/20 dark:border-white/10 group">
+                  {/* Photo of Pannu Vaid */}
+                  <div className="absolute inset-0 bg-[#f8faf8] dark:bg-[#0c160c]">
+                    <Image
+                      src={pannuVaidWriting}
+                      alt="Pannu Vaid consulting a patient"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Vignette gradient overlay for name block readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent pointer-events-none" />
+                  </div>
 
-                return (
-                  <motion.div
-                    key={idx}
-                    className="absolute inset-0"
-                    style={{ zIndex: card.zIndex }}
-                    variants={{
-                      hover: {
-                        x: hoverX,
-                        y: hoverY,
-                        rotate: hoverRotate,
-                        scale: 1.05,
-                        transition: { duration: 0.4, ease: "easeOut" }
-                      }
-                    }}
-                    animate={{
-                      x: card.x,
-                      y: card.y,
-                      rotate: card.rotate,
-                    }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                  >
-                    <TiltCard
-                      className="w-full h-full rounded-[2rem] bg-white shadow-xl dark:bg-white/[0.04]"
-                      glowColor={card.glow}
-                    >
-                      <div className="relative w-full h-full rounded-[2rem] overflow-hidden flex flex-col justify-end p-6 border border-white/20 dark:border-white/10">
-                        {/* 3D Generated Graphic Backdrop */}
-                        <div className="absolute inset-0">
-                          <Image
-                            src={card.image}
-                            alt={card.title}
-                            fill
-                            priority
-                            sizes="320px"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                          {/* Soft vignette gradient overlay for typography readability */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Card Content */}
-                        <div className="relative z-10 text-white" style={{ transform: "translateZ(15px)" }}>
-                          <span className="inline-flex p-1.5 rounded-lg bg-white/10 backdrop-blur-md text-white mb-2 text-[10px] border border-white/10">
-                            <FaLeaf />
-                          </span>
-                          <h3 className="font-display text-base md:text-lg font-bold tracking-tight text-white leading-tight">{card.title}</h3>
-                          <p className="mt-1 text-[10px] text-white/80 leading-normal line-clamp-2">{card.desc}</p>
-                        </div>
-                      </div>
-                    </TiltCard>
-                  </motion.div>
-                );
-              })}
+                  {/* Card Content Overlay */}
+                  <div className="relative z-10 text-white" style={{ transform: "translateZ(20px)" }}>
+                    <span className="inline-flex items-center gap-1 p-1.5 rounded-lg bg-brand-500/80 backdrop-blur-md text-white mb-2 text-[10px] font-bold uppercase tracking-wider border border-white/10">
+                      <FaLeaf size={10} /> Chief Ayurvedic Physician
+                    </span>
+                    <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-white leading-tight">
+                      Pannu Vaid
+                    </h3>
+                    <p className="mt-1 text-xs text-white/90 leading-normal font-medium">
+                      Decades of Trusted root-cause healing
+                    </p>
+                  </div>
+                </div>
+              </TiltCard>
             </motion.div>
           </div>
 

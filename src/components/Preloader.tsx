@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { GiLiver } from "react-icons/gi";
 
 export function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -11,16 +12,18 @@ export function Preloader() {
   useEffect(() => {
     let start = 0;
     const end = 100;
+    const step = 2; // Step by 2% to optimize react renders
     const duration = 1200; // 1.2 seconds total duration
-    const stepTime = duration / end;
+    const stepTime = (duration / end) * step; // 24ms per step
 
     const timer = setInterval(() => {
-      start += 1;
-      setProgress(start);
+      start += step;
       if (start >= end) {
+        start = end;
         clearInterval(timer);
-        setTimeout(() => setLoading(false), 250); // slight pause at 100% for smooth transition
+        setTimeout(() => setLoading(false), 350); // pause for healthy liver state check
       }
+      setProgress(start);
     }, stepTime);
 
     return () => clearInterval(timer);
@@ -68,30 +71,58 @@ export function Preloader() {
 
             {/* Progress Text */}
             <div className="flex flex-col items-center gap-2">
-              <motion.span
-                key={progress}
-                initial={{ opacity: 0.6, y: -2 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="font-display text-4xl font-black tracking-wider text-brand-950"
-              >
+              <span className="font-display text-4xl font-black tracking-wider text-brand-950">
                 {progress}%
-              </motion.span>
+              </span>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.8 }}
                 transition={{ delay: 0.2 }}
                 className="text-[10px] font-bold uppercase tracking-widest text-brand-700/70"
               >
-                Pure Ayurveda • Natural Healing
+                Pannu Vaid • Natural Healing
               </motion.p>
+              {/* Dynamic Health Status Indicator */}
+              <span 
+                className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full transition-all duration-300 ${
+                  progress < 40 
+                    ? "bg-amber-100 text-amber-800 border border-amber-200/50" 
+                    : progress < 80 
+                    ? "bg-yellow-100 text-yellow-800 border border-yellow-200/50" 
+                    : "bg-brand-100 text-brand-800 border border-brand-200/50"
+                }`}
+              >
+                {progress < 40 ? "⚠️ Fatty Liver" : progress < 80 ? "⚡ Detoxifying..." : "✅ Healthy Liver!"}
+              </span>
             </div>
 
-            {/* Sleek Progress Bar */}
-            <div className="w-48 h-[3px] bg-brand-100/70 rounded-full overflow-hidden relative">
-              <motion.div
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-brand-600 via-brand-500 to-gold-500"
-                style={{ width: `${progress}%` }}
-              />
+            {/* Sleek Progress Bar with Moving Liver Care Icon */}
+            <div className="w-48 relative mt-4 pb-2">
+              {/* Progress bar track */}
+              <div className="w-full h-[4px] bg-brand-100/70 rounded-full overflow-hidden relative">
+                <div
+                  className="absolute top-0 left-0 h-full bg-gradient-to-r from-brand-600 via-brand-500 to-gold-500 transition-all duration-150 ease-out"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+
+              {/* Moving Liver icon riding on the progress line */}
+              <div
+                className="absolute -top-7 -translate-x-1/2 flex flex-col items-center pointer-events-none transition-all duration-150 ease-out"
+                style={{ left: `${progress}%` }}
+              >
+                <div
+                  className={`transition-all duration-300 transform ${
+                    progress < 40
+                      ? "text-amber-500 scale-125 rotate-12 drop-shadow-[0_2px_8px_rgba(245,158,11,0.5)]"
+                      : progress < 80
+                      ? "text-yellow-500 scale-110 -rotate-6 drop-shadow-[0_2px_8px_rgba(234,179,8,0.5)] animate-pulse"
+                      : "text-brand-600 scale-100 rotate-0 drop-shadow-[0_4px_10px_rgba(79,158,40,0.6)]"
+                  }`}
+                >
+                  <GiLiver size={22} />
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FiArrowRight, FiSearch, FiActivity, FiCheckCircle } from "react-icons/fi";
 import { FaLeaf, FaBone, FaBrain, FaSpa } from "react-icons/fa";
 import { treatments } from "@/lib/treatments";
+import { diseaseCategories, type DiseaseCategory } from "@/lib/diseases";
 import { treatmentImage } from "@/lib/images";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
@@ -14,6 +15,7 @@ import { CTABand } from "@/components/CTABand";
 export default function TreatmentsPage() {
   const [activeTab, setActiveTab] = useState<"all" | "joints" | "internal">("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [directorySearch, setDirectorySearch] = useState("");
 
   // Categorize treatments
   const filteredTreatments = useMemo(() => {
@@ -52,6 +54,28 @@ export default function TreatmentsPage() {
     });
   }, [activeTab, searchQuery]);
 
+  // Filter disease directory
+  const filteredCategories = useMemo(() => {
+    if (!directorySearch.trim()) return diseaseCategories;
+    const query = directorySearch.toLowerCase();
+    return diseaseCategories.filter(
+      (cat: DiseaseCategory) =>
+        cat.punjabi.toLowerCase().includes(query) ||
+        cat.english.toLowerCase().includes(query) ||
+        cat.conditions.some((cond: string) => cond.toLowerCase().includes(query))
+    );
+  }, [directorySearch]);
+
+  const matchesQuery = (cat: DiseaseCategory) => {
+    if (!directorySearch.trim()) return false;
+    const query = directorySearch.toLowerCase();
+    return (
+      cat.punjabi.toLowerCase().includes(query) ||
+      cat.english.toLowerCase().includes(query) ||
+      cat.conditions.some((cond: string) => cond.toLowerCase().includes(query))
+    );
+  };
+
   return (
     <>
       {/* Dynamic Visual Hero Section */}
@@ -79,14 +103,14 @@ export default function TreatmentsPage() {
 
               <Reveal delay={1}>
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-6.5xl font-black leading-[1.1] tracking-tight text-brand-950 dark:text-brand-50">
-                  Specialised <br />
-                  <span className="gradient-text">Ayurvedic</span> Care
+                  Specialised Care <br />
+                  By <span className="gradient-text">Pannu Vaid</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={2}>
                 <p className="max-w-xl text-base sm:text-lg text-brand-800/80 dark:text-brand-200/70 leading-relaxed">
-                  Root-cause, drug-free care for a wide range of chronic spinal, joint, and internal conditions. Each healing protocol is personalized to your body constitution (Prakriti) and specific symptoms.
+                  Root-cause, drug-free care by Pannu Vaid for a wide range of chronic spinal, joint, and internal conditions. Each healing protocol is personalized to your body constitution (Prakriti).
                 </p>
               </Reveal>
             </div>
@@ -236,6 +260,98 @@ export default function TreatmentsPage() {
               })}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Comprehensive Directory of Treated Conditions */}
+      <section className="section py-20 bg-brand-50/10 dark:bg-[#070c07]/20 border-t border-brand-100/20 dark:border-brand-900/10 relative overflow-hidden">
+        {/* Soft background decor */}
+        <div className="absolute right-0 top-0 -z-10 h-96 w-96 rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute left-0 bottom-0 -z-10 h-96 w-96 rounded-full bg-gold-500/5 blur-3xl pointer-events-none" />
+
+        <div className="container-px">
+          <div className="mx-auto max-w-3xl text-center mb-14">
+            <Reveal>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50/50 dark:bg-brand-950/60 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-350 border border-brand-100/50 dark:border-brand-900/50">
+                📋 Specialised Treatment Directory
+              </span>
+            </Reveal>
+            <Reveal delay={1}>
+              <h2 className="mt-4 font-display text-3xl sm:text-4.5xl font-black text-brand-950 dark:text-brand-50 tracking-tight">
+                Conditions We Treat
+              </h2>
+            </Reveal>
+            <Reveal delay={2}>
+              <p className="mt-4 text-sm sm:text-base text-brand-800/80 dark:text-brand-200/70 max-w-xl mx-auto leading-relaxed">
+                Pannu Vaid provides expert root-cause diagnosis and highly effective Ayurvedic treatments for the following **20 key medical categories** and their specific conditions:
+              </p>
+            </Reveal>
+
+            {/* Directory Search Bar */}
+            <Reveal delay={3} className="mt-8 max-w-md mx-auto">
+              <div className="relative">
+                <span className="absolute inset-y-0 left-4 flex items-center text-brand-800/40 dark:text-brand-200/40">
+                  <FiSearch size={18} />
+                </span>
+                <input
+                  type="text"
+                  value={directorySearch}
+                  onChange={(e) => setDirectorySearch(e.target.value)}
+                  placeholder="Search from our 20+ specialized clinical categories..."
+                  className="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-brand-200/85 bg-white text-xs sm:text-sm outline-none transition-all duration-350 focus:border-brand-500 focus:ring-1 focus:ring-brand-500/20 dark:border-brand-800 dark:bg-white/5 dark:focus:bg-[#0c160c] dark:focus:border-brand-400 text-brand-950 dark:text-brand-50"
+                />
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Directory Cards Grid */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredCategories.map((cat, idx) => (
+              <Reveal key={cat.id} delay={idx % 4}>
+                <div
+                  className={`h-full rounded-[2rem] p-6 bg-white dark:bg-[#0c160c]/40 border transition-all duration-350 ${
+                    directorySearch && matchesQuery(cat)
+                      ? "border-brand-500/80 dark:border-brand-400 shadow-[0_12px_30px_rgba(79,158,40,0.12)] bg-brand-50/20"
+                      : "border-brand-100/60 dark:border-brand-900/40 shadow-soft"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div>
+                      {/* Punjabi Category Name */}
+                      <h4 className="font-display text-lg font-black text-brand-950 dark:text-brand-100 leading-tight">
+                        {cat.punjabi}
+                      </h4>
+                      {/* English Category Name */}
+                      <p className="text-[10px] font-extrabold uppercase tracking-wider text-brand-650 dark:text-brand-400 mt-1">
+                        {cat.english}
+                      </p>
+                    </div>
+                    {/* Index Badge */}
+                    <span className="text-2xl font-black bg-gradient-to-br from-brand-650 to-gold-500 bg-clip-text text-transparent opacity-80 shrink-0">
+                      {String(cat.id).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Specific Conditions Bullets */}
+                  <ul className="space-y-2">
+                    {cat.conditions.map((cond, cIdx) => (
+                      <li
+                        key={cIdx}
+                        className={`text-xs flex items-start gap-2 leading-relaxed transition-all duration-200 ${
+                          directorySearch && cond.toLowerCase().includes(directorySearch.toLowerCase())
+                            ? "text-brand-700 dark:text-brand-350 font-bold scale-[1.02]"
+                            : "text-brand-850 dark:text-brand-200/80"
+                        }`}
+                      >
+                        <span className="text-brand-500 shrink-0 mt-1">•</span>
+                        <span>{cond}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

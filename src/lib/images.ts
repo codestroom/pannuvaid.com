@@ -6,6 +6,9 @@ export const u = (id: string, w = 1200) =>
 export const heroImage = u("photo-1544161515-4ab6ce6db874", 1600);
 // Spoons of herbal powders (churna) with fresh herbs — classical ayurvedic medicine
 export const aboutImage = u("photo-1506368249639-73a05d6f6488", 1100);
+// Pannu Vaid photographs
+export const pannuVaidPortrait = "/images/pannu-vaid-portrait.jpg";
+export const pannuVaidWriting = "/images/pannu-vaid-writing.jpg";
 // Herbal oil drops being applied to the hand — natural remedy in use
 export const aboutSecondaryImage = u("photo-1515377905703-c4788e51af15", 800);
 // Sunrise meditation
@@ -29,6 +32,8 @@ export const treatmentImages: Record<string, string> = {
   "allergy-management": "/images/treatments/allergy-management.png",
   "chronic-pain-relief": "/images/treatments/chronic-pain-relief.png",
   "general-wellness": "/images/treatments/general-wellness.png",
+  "diabetes-care": "/images/treatments/diabetes-care.png",
+  "ear-care": "/images/treatments/ear-care.png",
 };
 
 export const blogImages: Record<string, string> = {

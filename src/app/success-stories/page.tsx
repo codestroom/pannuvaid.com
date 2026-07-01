@@ -108,7 +108,7 @@ export default function SuccessStoriesPage() {
       <PageHero
         eyebrow="Recovery Records"
         title="Verified Healing Journeys"
-        description="Authentic case files and video documentation from patients who recovered through classical Ayurvedic treatment at our clinic."
+        description="Authentic case files and video documentation from patients who recovered through Pannu Vaid's treatments at our clinic."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Success Stories" }]}
       />
 
@@ -126,7 +126,7 @@ export default function SuccessStoriesPage() {
             </Reveal>
             <Reveal delay={1}>
               <h2 className="mt-4 font-display text-3xl font-black leading-tight text-brand-950 dark:text-brand-50 sm:text-4xl md:text-[2.6rem] tracking-tight">
-                Watch Real Clinic Recoveries
+                Watch Real Pannu Vaid Clinic Recoveries
               </h2>
             </Reveal>
             <Reveal delay={2}>
@@ -375,7 +375,7 @@ export default function SuccessStoriesPage() {
           <SectionHeading
             eyebrow="Case Files"
             title="Before & After Treatment"
-            description="Documented patient transformations — where they started, and where authentic Ayurveda brought them."
+            description="Documented patient transformations — where they started, and how Pannu Vaid helped them recover."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">

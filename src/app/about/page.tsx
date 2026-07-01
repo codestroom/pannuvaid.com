@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FaBullseye, FaEye, FaLeaf, FaSeedling, FaAward, FaUsers, FaMortarPestle, FaHeart } from "react-icons/fa";
 import { FiCheck } from "react-icons/fi";
 import { PageHero } from "@/components/PageHero";
-import { aboutImage, aboutSecondaryImage, medicineMakingImage, herbalPreparationImage } from "@/lib/images";
+import { aboutImage, aboutSecondaryImage, medicineMakingImage, herbalPreparationImage, pannuVaidPortrait, pannuVaidWriting } from "@/lib/images";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { Counter } from "@/components/Counter";
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const timeline = [
   { year: "Origins", title: "Rooted in Tradition", desc: "Born from a family lineage of Ayurvedic healers in Punjab, carrying forward generations of herbal knowledge." },
   { year: "Growth", title: "Serving the Community", desc: "Establishing a trusted practice in Samrala, helping thousands find relief from chronic pain naturally." },
-  { year: "Expertise", title: "Specialised Care", desc: "Developing focused protocols for joint, nerve, and digestive disorders using authentic Panchakarma." },
+  { year: "Expertise", title: "Specialised Care", desc: "Developing focused protocols for Brain & Nerve, Liver & Digestive, and Allergy disorders using authentic Ayurvedic formulations." },
   { year: "Today", title: "Modern Ayurveda", desc: "Combining timeless Ayurvedic wisdom with a compassionate, modern patient experience." },
 ];
 
@@ -29,7 +29,7 @@ const storyHighlights = [
   "Family lineage of traditional vaids",
   "Authentic Panchakarma therapies",
   "Personalised herbal formulations",
-  "Trusted by 50,000+ patients",
+  "Trusted by 2 Lakh+ patients",
 ];
 
 const statIcons = [FaAward, FaUsers, FaMortarPestle, FaHeart];
@@ -45,8 +45,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About Pannu Vaid"
-        title="Healing Lives Through Authentic Ayurveda"
-        description="A trusted Ayurvedic healthcare brand based in Samrala, Punjab — dedicated to natural, root-cause healing for over two decades."
+        title="Healing Lives Through Pannu Vaid"
+        description="A trusted healthcare brand based in Samrala, Punjab — dedicated to authentic, root-cause healing for over two decades."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
@@ -68,8 +68,8 @@ export default function AboutPage() {
               >
                 <div className="relative aspect-[5/4] w-full rounded-[2.5rem] overflow-hidden border border-white/20 dark:border-white/5">
                   <Image
-                    src={aboutImage}
-                    alt="Classical Ayurvedic herbal powders (churna) and fresh herbs prepared at Pannu Vaid"
+                    src={pannuVaidPortrait}
+                    alt="Pannu Vaid — Chief Ayurvedic Physician"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
@@ -77,17 +77,17 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/35 via-transparent to-transparent" />
                   {/* Caption chip on the image */}
                   <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-black/35 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white backdrop-blur-md border border-white/20">
-                    <FaLeaf className="text-brand-300" size={10} /> Pure Herbal Formulations
+                    <FaLeaf className="text-brand-300" size={10} /> Chief Ayurvedic Physician
                   </span>
                 </div>
               </TiltCard>
 
               {/* Secondary overlapping image — "rooted in tradition" */}
               <div className="absolute -bottom-2 left-0 sm:-left-2 z-20 w-32 sm:w-44 -rotate-3 transition-transform duration-500 hover:rotate-0">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border-4 border-white shadow-2xl dark:border-[#0b150a]">
+                <div className="relative aspect-square overflow-hidden rounded-3xl border-4 border-white shadow-2xl dark:border-[#0b150a]">
                   <Image
-                    src={aboutSecondaryImage}
-                    alt="Ayurvedic herbal oil drops being applied to the hand"
+                    src={pannuVaidWriting}
+                    alt="Pannu Vaid consulting a patient"
                     fill
                     sizes="200px"
                     className="object-cover"
@@ -196,7 +196,7 @@ export default function AboutPage() {
         <div className="absolute right-0 top-1/3 -z-10 h-80 w-80 rounded-full bg-gold-400/5 blur-3xl pointer-events-none" />
         <div className="container-px">
           <SectionHeading
-            eyebrow="Our Ayurvedic Philosophy"
+            eyebrow="Pannu Vaid's Philosophy"
             title="The Principles That Guide Our Care"
           />
           <div className="mt-14 grid items-center gap-12 lg:grid-cols-2">

@@ -50,7 +50,7 @@ export default async function TreatmentDetail({
     <>
       <JsonLd data={faqSchema(t.faqs)} />
       <PageHero
-        eyebrow="Ayurvedic Treatment"
+        eyebrow="Pannu Vaid Speciality"
         title={t.title}
         description={t.short}
         breadcrumb={[
@@ -146,7 +146,7 @@ export default async function TreatmentDetail({
               <div className="rounded-[2rem] bg-brand-gradient p-8 text-white shadow-2xl relative overflow-hidden border border-white/10">
                 <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10 blur-xl" />
                 <h3 className="font-display text-2xl font-bold tracking-tight relative z-10">
-                  Our Ayurvedic Approach
+                  Pannu Vaid's Healing Approach
                 </h3>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2 relative z-10">
                   {t.approach.map((a) => (

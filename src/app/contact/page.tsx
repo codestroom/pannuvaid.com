@@ -146,7 +146,7 @@ export default function ContactPage() {
                     <h3 className="text-sm font-bold text-brand-950 dark:text-brand-50 tracking-tight">Get Directions</h3>
                     <p className="text-[10px] text-brand-800/50 dark:text-brand-200/40 mt-0.5">Samrala clinic site</p>
                   </div>
-                  <p className="text-sm font-black text-brand-950 dark:text-brand-100">Main Bazaar, Ludhiana</p>
+                  <p className="text-sm font-black text-brand-950 dark:text-brand-100">Vill. Bondli, Samrala</p>
                 </div>
                 <div className="pt-6" style={{ transform: "translateZ(15px)" }}>
                   <a
@@ -199,13 +199,8 @@ export default function ContactPage() {
                       </p>
                       
                       <div className="flex justify-between items-center text-xs font-semibold">
-                        <span className="text-brand-850 dark:text-brand-200">Monday – Saturday</span>
-                        <span className="text-brand-950 dark:text-brand-50 bg-white dark:bg-brand-950/80 border border-brand-100 dark:border-brand-900/50 px-2 py-0.5 rounded-lg">9:00 AM – 7:00 PM</span>
-                      </div>
-
-                      <div className="flex justify-between items-center text-xs font-semibold border-t border-brand-100/10 dark:border-brand-900/10 pt-2.5">
-                        <span className="text-brand-850 dark:text-brand-200">Sunday</span>
-                        <span className="text-brand-950 dark:text-brand-50 bg-white dark:bg-brand-950/80 border border-brand-100 dark:border-brand-900/50 px-2 py-0.5 rounded-lg">10:00 AM – 2:00 PM</span>
+                        <span className="text-brand-850 dark:text-brand-200">Monday – Sunday</span>
+                        <span className="text-brand-950 dark:text-brand-50 bg-white dark:bg-brand-950/80 border border-brand-100 dark:border-brand-900/50 px-2 py-0.5 rounded-lg">9:00 AM – 5:00 PM</span>
                       </div>
                     </div>
                   </div>

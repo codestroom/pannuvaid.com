@@ -24,23 +24,12 @@ export function ClinicStatus() {
       let isOpen = false;
       let message = "";
 
-      if (day === 0) {
-        // Sunday: 10:00 AM - 2:00 PM
-        if (timeDecimal >= 10 && timeDecimal < 14) {
-          isOpen = true;
-          message = "Open Now (Closes at 2:00 PM)";
-        } else {
-          message = "Closed Now (Sunday Hours: 10:00 AM - 2:00 PM)";
-        }
+      // Monday - Sunday: 9:00 AM - 5:00 PM
+      if (timeDecimal >= 9 && timeDecimal < 17) {
+        isOpen = true;
+        message = "Open Now (Closes at 5:00 PM)";
       } else {
-        // Monday - Saturday: 9:00 AM - 7:00 PM
-        if (timeDecimal >= 9 && timeDecimal < 19) {
-          isOpen = true;
-          message = "Open Now (Closes at 7:00 PM)";
-        } else {
-          const nextDayTime = day === 6 ? "10:00 AM Sunday" : "9:00 AM Tomorrow";
-          message = `Closed Now (Opens at ${nextDayTime})`;
-        }
+        message = "Closed Now (Opens at 9:00 AM)";
       }
 
       setStatus({ isOpen, message });
