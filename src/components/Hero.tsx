@@ -7,7 +7,7 @@ import { useRef, useEffect } from "react";
 import { FaLeaf, FaWhatsapp, FaStar } from "react-icons/fa";
 import { FiArrowRight, FiPhone } from "react-icons/fi";
 import { site, trustBadges } from "@/lib/site";
-import { heroImage, pannuVaidWriting } from "@/lib/images";
+import { heroImage, pannuVaidPortrait } from "@/lib/images";
 import { TiltCard } from "./TiltCard";
 
 const heroCards = [
@@ -308,8 +308,8 @@ export function Hero() {
                   {/* Photo of Pannu Vaid */}
                   <div className="absolute inset-0 bg-[#f8faf8] dark:bg-[#0c160c]">
                     <Image
-                      src={pannuVaidWriting}
-                      alt="Pannu Vaid consulting a patient"
+                      src={pannuVaidPortrait}
+                      alt="Pannu Vaid — Chief Ayurvedic Physician"
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 40vw"

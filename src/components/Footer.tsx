@@ -79,11 +79,15 @@ export function Footer() {
               <FiMapPin className="mt-0.5 shrink-0 text-brand-600" />
               {site.address.full}
             </li>
-            <li className="flex items-center gap-3">
-              <FiPhone className="shrink-0 text-brand-600" />
-              <a href={`tel:${site.phoneHref}`} className="hover:text-brand-600">
-                {site.phone}
-              </a>
+            <li className="flex items-start gap-3">
+              <FiPhone className="shrink-0 text-brand-600 mt-1" />
+              <div className="flex flex-col gap-1.5">
+                {site.phones.map((p) => (
+                  <a key={p.href} href={`tel:${p.href}`} className="hover:text-brand-600 transition">
+                    {p.label}
+                  </a>
+                ))}
+              </div>
             </li>
             <li className="flex items-center gap-3">
               <FiMail className="shrink-0 text-brand-600" />

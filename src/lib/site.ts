@@ -6,6 +6,11 @@ export const site = {
   url: "https://www.pannuvaid.com",
   phone: "+91 99889 12012",
   phoneHref: "+919988912012",
+  phones: [
+    { label: "+91 99889 12012", href: "+919988912012" },
+    { label: "+91 98885 16016", href: "+919888516016" },
+    { label: "+91 99884 14014", href: "+919988414014" },
+  ],
   whatsapp: "919988912012",
   email: "care@pannuvaid.com",
   address: {
@@ -21,9 +26,9 @@ export const site = {
   mapEmbed:
     "https://www.google.com/maps?q=Opp.+Maharaja+Palace,+Vill.+Bondli,+Samrala,+Punjab+141114&output=embed",
   social: {
-    facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
-    youtube: "https://youtube.com",
+    facebook: "https://www.facebook.com/profile.php?id=100095206464219#",
+    instagram: "https://www.instagram.com/pannu__vaid?igsh=MWZ2aDYxNHVpMzM5aA%3D%3D&utm_source=qr",
+    youtube: "https://www.youtube.com/@vaidpannu",
   },
 } as const;
 

@@ -98,7 +98,17 @@ export default function ContactPage() {
                     <h3 className="text-sm font-bold text-brand-950 dark:text-brand-50 tracking-tight">Call Reception</h3>
                     <p className="text-[10px] text-brand-800/50 dark:text-brand-200/40 mt-0.5">Clinic enquiry desk</p>
                   </div>
-                  <p className="text-sm font-black text-brand-950 dark:text-brand-100">{site.phone}</p>
+                  <div className="flex flex-col gap-1">
+                    {site.phones.map((p) => (
+                      <a
+                        key={p.href}
+                        href={`tel:${p.href}`}
+                        className="text-sm font-black text-brand-950 dark:text-brand-100 hover:text-amber-700 dark:hover:text-amber-450 transition-colors"
+                      >
+                        {p.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
                 <div className="pt-6" style={{ transform: "translateZ(15px)" }}>
                   <a href={`tel:${site.phoneHref}`} className="text-xs font-black uppercase tracking-wider text-amber-700 hover:text-amber-800 dark:text-amber-450 dark:hover:text-amber-300">
