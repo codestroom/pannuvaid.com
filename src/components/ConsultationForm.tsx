@@ -5,10 +5,14 @@ import { FiCheckCircle, FiSend } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { treatments } from "@/lib/treatments";
 import { site } from "@/lib/site";
-import { TiltCard } from "./TiltCard";
+
+
+import { sendEnquiry } from "@/app/actions";
 
 export function ConsultationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -18,9 +22,23 @@ export function ConsultationForm() {
 
   const update = (k: string, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await sendEnquiry(form);
+      if (res.success) {
+        setSubmitted(true);
+      } else {
+        setError(res.error || "Unable to submit request. Please try again.");
+      }
+    } catch (err) {
+      setError("Failed to connect. Please check your internet connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const whatsappLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
@@ -29,41 +47,33 @@ export function ConsultationForm() {
 
   if (submitted) {
     return (
-      <TiltCard
-        className="rounded-3xl bg-white shadow-soft dark:bg-white/[0.03]"
-        glowColor="rgba(37, 211, 102, 0.2)"
-      >
-        <div className="p-8 text-center" style={{ transform: "translateZ(15px)" }}>
-          <FiCheckCircle className="mx-auto text-5xl text-brand-600 dark:text-brand-400" />
-          <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">Thank you!</h3>
-          <p className="mt-3 text-sm text-brand-800/75 dark:text-brand-200/65 leading-relaxed">
-            Your appointment request has been received. To confirm instantly, send
-            us the details on WhatsApp.
-          </p>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn mt-6 bg-[#25D366] text-white hover:bg-[#20ba59] shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 font-bold w-full flex items-center justify-center gap-2"
-          >
-            <FaWhatsapp className="text-xl" /> Confirm on WhatsApp
-          </a>
-        </div>
-      </TiltCard>
+      <div className="rounded-3xl bg-white shadow-soft border border-brand-100/50 dark:border-brand-900/40 dark:bg-white/[0.03] p-8 text-center">
+        <FiCheckCircle className="mx-auto text-5xl text-brand-600 dark:text-brand-400" />
+        <h3 className="mt-4 font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">Thank you!</h3>
+        <p className="mt-3 text-sm text-brand-800/75 dark:text-brand-200/65 leading-relaxed">
+          Your appointment request has been received. To confirm instantly, send
+          us the details on WhatsApp.
+        </p>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn mt-6 bg-[#25D366] text-white hover:bg-[#20ba59] shadow-lg hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 font-bold w-full flex items-center justify-center gap-2"
+        >
+          <FaWhatsapp className="text-xl" /> Confirm on WhatsApp
+        </a>
+      </div>
     );
   }
 
   return (
-    <TiltCard
-      className="rounded-3xl bg-white shadow-2xl dark:bg-white/[0.03]"
-      glowColor="rgba(79, 158, 40, 0.12)"
-    >
-      <form onSubmit={handleSubmit} className="space-y-5 p-7 sm:p-8 border border-white/20 dark:border-white/5 rounded-3xl">
-        <h3 className="font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50" style={{ transform: "translateZ(15px)" }}>
+    <div className="rounded-3xl bg-white shadow-2xl dark:bg-white/[0.03] border border-white/20 dark:border-white/5 overflow-hidden">
+      <form onSubmit={handleSubmit} className="space-y-5 p-7 sm:p-8 rounded-3xl">
+        <h3 className="font-display text-2xl font-bold tracking-tight text-brand-950 dark:text-brand-50">
           Request an Appointment
         </h3>
         
-        <div className="grid gap-4 sm:grid-cols-2" style={{ transform: "translateZ(10px)" }}>
+        <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Full Name">
             <input
               required
@@ -85,7 +95,7 @@ export function ConsultationForm() {
           </Field>
         </div>
         
-        <div style={{ transform: "translateZ(10px)" }}>
+        <div>
           <Field label="Concern / Treatment">
             <select
               value={form.treatment}
@@ -100,7 +110,7 @@ export function ConsultationForm() {
           </Field>
         </div>
 
-        <div style={{ transform: "translateZ(10px)" }}>
+        <div>
           <Field label="Message (optional)">
             <textarea
               value={form.message}
@@ -112,15 +122,32 @@ export function ConsultationForm() {
           </Field>
         </div>
 
-        <button type="submit" className="btn-primary w-full group py-4 flex items-center justify-center gap-2 font-bold shadow-lg" style={{ transform: "translateZ(15px)" }}>
-          <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /> Submit Request
+        <button
+          type="submit"
+          disabled={submitting}
+          className="btn-primary w-full group py-4 flex items-center justify-center gap-2 font-bold shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {submitting ? (
+            <span>Submitting Request...</span>
+          ) : (
+            <>
+              <FiSend className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span>Submit Request</span>
+            </>
+          )}
         </button>
+
+        {error && (
+          <p className="text-sm font-bold text-red-600 dark:text-red-400 text-center">
+            {error}
+          </p>
+        )}
         
-        <p className="text-center text-xs text-brand-850/60 dark:text-brand-200/40" style={{ transform: "translateZ(5px)" }}>
+        <p className="text-center text-xs text-brand-850/60 dark:text-brand-200/40">
           We respect your privacy. Your details are never shared.
         </p>
       </form>
-    </TiltCard>
+    </div>
   );
 }
 
